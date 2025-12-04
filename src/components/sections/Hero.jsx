@@ -71,21 +71,20 @@ const Hero = () => {
         animate={{
           scale: 1,
           opacity: 1,
-          y: 0,
+          y: [0, -15, 0], // Combine entrance and float
         }}
         transition={{
-          duration: 0.8,
-          ease: "easeOut",
+          y: {
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1, // Wait for entrance
+          },
+          scale: { duration: 0.8 },
+          opacity: { duration: 0.8 },
         }}
         className="lg:col-span-8 bg-skin-accent rounded-[40px] p-8 sm:p-12 relative overflow-hidden min-h-[400px] flex flex-col justify-between group perspective-1000"
       >
-        {/* Floating Animation Wrapper */}
-        <motion.div
-          animate={{ y: [0, -15, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0 pointer-events-none"
-        />
-
         {/* Download Button on Card */}
         <div className="self-end relative z-10">
           <motion.a

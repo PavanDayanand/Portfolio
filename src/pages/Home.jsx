@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="relative bg-skin-base min-h-screen overflow-hidden">
+    <div className="relative bg-skin-base min-h-screen">
       {/* Noise Texture Overlay */}
       <div
         className="fixed inset-0 pointer-events-none z-50 opacity-[0.03] mix-blend-overlay"
