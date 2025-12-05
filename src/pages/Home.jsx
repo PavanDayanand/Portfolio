@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
+import TechMarquee from "../components/ui/TechMarquee";
+
 const Home = () => {
   return (
     <div className="relative bg-skin-base min-h-screen">
@@ -17,6 +19,7 @@ const Home = () => {
       />
 
       <Hero />
+      <TechMarquee />
 
       <div className="my-20">
         <About />

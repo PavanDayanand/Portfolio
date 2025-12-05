@@ -1,8 +1,10 @@
 import React from "react";
 import BentoCard from "../ui/BentoCard";
 import { CheckCircle2, GraduationCap } from "lucide-react";
+import { useTheme } from "../../context/ThemeContext";
 
 const EducationSection = () => {
+  const { isBlueMode } = useTheme();
   const education = [
     {
       year: "2022 - Present",
@@ -32,7 +34,8 @@ const EducationSection = () => {
       {education.map((edu, index) => (
         <BentoCard
           key={index}
-          className="!bg-[#1C1C1E] !text-white !p-8 flex flex-col justify-between min-h-[160px] group hover:border-brand-blue border border-white/10 transition-colors"
+          dark={!isBlueMode} // Inverted: Dark card in Light Mode, Light card in Dark Mode
+          className="flex flex-col justify-between min-h-[160px] group hover:border-brand-blue border border-white/10 transition-colors"
         >
           <div className="flex justify-between items-start mb-4">
             <span className="px-4 py-1.5 bg-white text-brand-dark text-sm font-bold rounded-full">

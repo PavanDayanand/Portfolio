@@ -4,6 +4,7 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [isBlueMode, setIsBlueMode] = useState(false);
+  const [isCommandPaletteOpen, setCommandPaletteOpen] = useState(false);
 
   const toggleTheme = () => {
     setIsBlueMode(!isBlueMode);
@@ -18,7 +19,14 @@ export const ThemeProvider = ({ children }) => {
   }, [isBlueMode]);
 
   return (
-    <ThemeContext.Provider value={{ isBlueMode, toggleTheme }}>
+    <ThemeContext.Provider
+      value={{
+        isBlueMode,
+        toggleTheme,
+        isCommandPaletteOpen,
+        setCommandPaletteOpen,
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );

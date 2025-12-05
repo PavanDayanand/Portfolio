@@ -1,5 +1,6 @@
 import React from "react";
 import BentoCard from "../ui/BentoCard";
+import NowWidget from "../ui/NowWidget";
 import { Mail, Linkedin, Globe, Github } from "lucide-react";
 
 const About = () => {
@@ -30,7 +31,7 @@ const About = () => {
       </BentoCard>
 
       {/* Introduction Card - Wide */}
-      <BentoCard className="md:col-span-2 lg:col-span-3 flex flex-col justify-center">
+      <BentoCard className="md:col-span-2 lg:col-span-2 flex flex-col justify-center">
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="flex-1">
             <h3 className="text-xl font-bold mb-4">
@@ -54,13 +55,18 @@ const About = () => {
         </div>
       </BentoCard>
 
+      {/* Now Widget */}
+      <NowWidget />
+
       {/* Contact Cards - Small Squares */}
       <div className="md:col-span-2 lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-6">
         <a href="mailto:pavan.radapa@gmail.com" className="contents">
-          <BentoCard className="!bg-[#1C1C1E] !text-white flex flex-col justify-between aspect-square sm:aspect-auto sm:h-40 hover:scale-[1.02] transition-transform cursor-pointer">
+          <BentoCard className="!bg-[#1C1C1E] !text-white flex flex-col justify-between aspect-square sm:aspect-auto sm:h-40 hover:scale-[1.02] active:scale-95 hover:shadow-xl hover:brightness-110 transition-all duration-300 cursor-pointer p-6">
             <Mail size={32} />
-            <div>
-              <p className="text-xs text-gray-400">Email</p>
+            <div className="mt-auto pt-4">
+              <p className="text-xs text-gray-400 mb-1 tracking-wide uppercase">
+                Email
+              </p>
               <p className="font-medium text-sm truncate">
                 pavan.radapa@gmail.com
               </p>
@@ -74,10 +80,12 @@ const About = () => {
           rel="noopener noreferrer"
           className="contents"
         >
-          <BentoCard className="!bg-[#0077B5] !text-white flex flex-col justify-between aspect-square sm:aspect-auto sm:h-40 hover:scale-[1.02] transition-transform cursor-pointer">
+          <BentoCard className="!bg-[#0077B5] !text-white flex flex-col justify-between aspect-square sm:aspect-auto sm:h-40 hover:scale-[1.02] active:scale-95 hover:shadow-xl hover:brightness-110 transition-all duration-300 cursor-pointer p-6">
             <Linkedin size={32} />
-            <div>
-              <p className="text-xs text-blue-200">LinkedIn</p>
+            <div className="mt-auto pt-4">
+              <p className="text-xs text-blue-200 mb-1 tracking-wide uppercase">
+                LinkedIn
+              </p>
               <p className="font-medium text-sm">Connect with me</p>
             </div>
           </BentoCard>
@@ -89,10 +97,12 @@ const About = () => {
           rel="noopener noreferrer"
           className="contents"
         >
-          <BentoCard className="!bg-[#333] !text-white flex flex-col justify-between aspect-square sm:aspect-auto sm:h-40 hover:scale-[1.02] transition-transform cursor-pointer">
+          <BentoCard className="!bg-[#333] !text-white flex flex-col justify-between aspect-square sm:aspect-auto sm:h-40 hover:scale-[1.02] active:scale-95 hover:shadow-xl hover:brightness-110 transition-all duration-300 cursor-pointer p-6">
             <Github size={32} />
-            <div>
-              <p className="text-xs text-gray-400">GitHub</p>
+            <div className="mt-auto pt-4">
+              <p className="text-xs text-gray-400 mb-1 tracking-wide uppercase">
+                GitHub
+              </p>
               <p className="font-medium text-sm">PavanDayanand</p>
             </div>
           </BentoCard>
