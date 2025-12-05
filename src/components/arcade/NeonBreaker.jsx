@@ -397,7 +397,7 @@ const NeonBreaker = ({ onClose }) => {
             </span>{" "}
             TO MOVE •{" "}
             <span className="border border-gray-600 px-2 py-1 rounded mx-1">
-              SPACE
+              TAP
             </span>{" "}
             TO LAUNCH
           </div>
@@ -422,8 +422,22 @@ const NeonBreaker = ({ onClose }) => {
         </div>
       )}
       {/* Mobile Controls */}
+      {/* Touch Controls Layer */}
       {gameState === "playing" && (
         <>
+          {/* Tap anywhere to Launch if inactive */}
+          <div
+            className="absolute inset-0 z-40"
+            onPointerDown={() => {
+              if (!gameRef.current.ball.active) {
+                gameRef.current.ball.active = true;
+                gameRef.current.ball.dy = -gameRef.current.ball.speed;
+                gameRef.current.ball.dx = (Math.random() - 0.5) * 4;
+              }
+            }}
+          />
+
+          {/* Visible Buttons for Movement */}
           <div className="absolute bottom-5 left-5 flex gap-4 z-50">
             <button
               className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-full border border-[#00f3ff]/50 text-[#00f3ff] flex items-center justify-center active:bg-[#00f3ff]/20 transition-colors shadow-[0_0_10px_rgba(0,243,255,0.2)]"
@@ -440,20 +454,6 @@ const NeonBreaker = ({ onClose }) => {
               onPointerLeave={() => (gameRef.current.keys.right = false)}
             >
               →
-            </button>
-          </div>
-          <div className="absolute bottom-5 right-5 z-50">
-            <button
-              className="w-20 h-20 bg-[#bc13fe]/20 backdrop-blur-md rounded-full border border-[#bc13fe]/50 text-[#bc13fe] font-bold text-sm flex items-center justify-center active:bg-[#bc13fe]/40 transition-colors shadow-[0_0_15px_rgba(188,19,254,0.3)]"
-              onPointerDown={() => {
-                if (!gameRef.current.ball.active) {
-                  gameRef.current.ball.active = true;
-                  gameRef.current.ball.dy = -gameRef.current.ball.speed;
-                  gameRef.current.ball.dx = (Math.random() - 0.5) * 4;
-                }
-              }}
-            >
-              LAUNCH
             </button>
           </div>
         </>

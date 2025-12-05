@@ -89,18 +89,17 @@ const Hero = () => {
 
       {/* Right Column: Blue Portfolio Card */}
       <motion.div
-        initial={{ scale: 0.9, opacity: 0, y: 50 }}
+        initial={{ scale: 0.9, opacity: 0 }}
         animate={{
           scale: 1,
           opacity: 1,
-          y: [0, -15, 0], // Combine entrance and float
+          y: [0, -15, 0], // Continuous float
         }}
         transition={{
           y: {
             duration: 6,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 1, // Wait for entrance
           },
           scale: { duration: 0.8 },
           opacity: { duration: 0.8 },

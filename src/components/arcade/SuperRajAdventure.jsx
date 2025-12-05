@@ -62,21 +62,12 @@ const SuperRajAdventure = ({ onClose }) => {
     }
 
     update(keys, platforms, gameHeight, gameOverCallback, createDust) {
-      // Horizontal Movement
-      if (keys.right) {
-        this.vx = this.speed;
-        this.facingRight = true;
-        this.animFrame++;
-      } else if (keys.left) {
-        this.vx = -this.speed;
-        this.facingRight = false;
-        this.animFrame++;
-      } else {
-        this.vx = 0;
-        this.animFrame = 0;
-      }
+      // Auto-Run Logic
+      this.vx = this.speed;
+      this.facingRight = true;
+      this.animFrame++;
 
-      // Jumping
+      // Jumping (Space, ArrowUp, or Touch/Click)
       if (keys.up && this.grounded) {
         this.vy = this.jumpPower;
         this.grounded = false;
@@ -717,9 +708,32 @@ const SuperRajAdventure = ({ onClose }) => {
         gameRef.current.keys.up = false;
     };
 
+    const handleTouchStart = (e) => {
+      // Prevent default to avoid scrolling/zooming while playing
+      // e.preventDefault(); // Optional: might block scrolling on other parts if not careful
+      gameRef.current.keys.up = true;
+    };
+
+    const handleTouchEnd = () => {
+      gameRef.current.keys.up = false;
+    };
+
+    const handleMouseDown = () => {
+      gameRef.current.keys.up = true;
+    };
+
+    const handleMouseUp = () => {
+      gameRef.current.keys.up = false;
+    };
+
     window.addEventListener("resize", handleResize);
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
+    // Touch / Mouse listeners for Jump
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchend", handleTouchEnd);
+    window.addEventListener("mousedown", handleMouseDown);
+    window.addEventListener("mouseup", handleMouseUp);
 
     handleResize();
 
@@ -727,6 +741,10 @@ const SuperRajAdventure = ({ onClose }) => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", handleTouchEnd);
+      window.removeEventListener("mousedown", handleMouseDown);
+      window.removeEventListener("mouseup", handleMouseUp);
       cancelAnimationFrame(requestRef.current);
     };
   }, []);
@@ -762,7 +780,7 @@ const SuperRajAdventure = ({ onClose }) => {
       </button>
 
       <div className="absolute bottom-5 w-full text-center text-white text-xl pointer-events-none drop-shadow-md tracking-wider">
-        Arrow Keys to Move • Space to Jump
+        Tap to Jump • Avoid Obstacles
       </div>
 
       {/* Start Screen */}

@@ -725,6 +725,38 @@ const ApexSwitcher = ({ onClose }) => {
         className="shadow-[0_0_50px_rgba(0,243,255,0.2)] max-w-full max-h-full z-10"
       />
 
+      {/* Touch Controls Layer */}
+      {gameState === "playing" && (
+        <div className="absolute inset-0 z-50 flex">
+          {/* Left Zone - Move Left */}
+          <div
+            className="h-full w-[35%]"
+            onPointerDown={() => (gameRef.current.keys.left = true)}
+            onPointerUp={() => (gameRef.current.keys.left = false)}
+            onPointerLeave={() => (gameRef.current.keys.left = false)}
+          />
+          {/* Center Zone - Swap Mode */}
+          <div
+            className="h-full w-[30%]"
+            onPointerDown={() => {
+              if (!gameRef.current.keys.swapPressed) {
+                gameRef.current.keys.swap = true;
+                gameRef.current.keys.swapPressed = true;
+              }
+            }}
+            onPointerUp={() => (gameRef.current.keys.swapPressed = false)}
+            onPointerLeave={() => (gameRef.current.keys.swapPressed = false)}
+          />
+          {/* Right Zone - Move Right */}
+          <div
+            className="h-full w-[35%]"
+            onPointerDown={() => (gameRef.current.keys.right = true)}
+            onPointerUp={() => (gameRef.current.keys.right = false)}
+            onPointerLeave={() => (gameRef.current.keys.right = false)}
+          />
+        </div>
+      )}
+
       <button
         onClick={onClose}
         className="absolute top-5 right-5 z-50 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white backdrop-blur-md transition-colors"
