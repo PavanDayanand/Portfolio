@@ -12,6 +12,7 @@ import Projects from "./pages/Projects";
 import Certifications from "./pages/Certifications";
 import Contact from "./pages/Contact";
 import Arcade from "./pages/Arcade";
+import Timeline from "./pages/Timeline";
 
 function App() {
   const location = useLocation();
@@ -31,6 +32,7 @@ function App() {
           <Route path="/certifications" element={<Certifications />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/arcade" element={<Arcade />} />
+          <Route path="/timeline" element={<Timeline />} />
         </Routes>
         <Footer />
       </Layout>
