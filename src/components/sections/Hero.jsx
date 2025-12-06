@@ -53,7 +53,7 @@ const Hero = () => {
             className={`group relative flex items-center gap-3 px-4 py-2 rounded-full transition-all duration-300 cursor-pointer mb-6 overflow-hidden hover:scale-105 ${
               isBlueMode
                 ? "bg-green-500/10 text-green-500 border border-green-500/20"
-                : "bg-black text-white border border-transparent"
+                : "bg-skin-card text-skin-text-base border border-skin-border-base shadow-sm hover:border-skin-border-base/80"
             }`}
           >
             <span className="relative flex h-2.5 w-2.5">
@@ -108,7 +108,7 @@ const Hero = () => {
       >
         {/* Handwritten Prompt (Inside Card) */}
         <div className="absolute top-8 left-8 z-20 hidden md:block">
-          <div className="relative">
+          <div className="flex flex-col gap-4">
             <div
               className="text-5xl lg:text-6xl text-white/90 -rotate-6 origin-bottom-left leading-none"
               style={{ fontFamily: '"Caveat", cursive' }}
@@ -165,10 +165,11 @@ const Hero = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 3, duration: 0.5, type: "spring" }}
+              transition={{ delay: 2.5, duration: 0.5, type: "spring" }}
+              className="relative pl-12"
             >
               <svg
-                className="absolute top-24 left-20 w-16 h-16 text-white/80 rotate-12"
+                className="absolute -top-8 left-8 w-16 h-16 text-white/80 rotate-12"
                 viewBox="0 0 100 100"
                 fill="none"
                 stroke="currentColor"
@@ -178,9 +179,10 @@ const Hero = () => {
                 <path d="M10,10 Q50,50 90,90" />
                 <path d="M90,90 L70,85 M90,90 L85,70" />
               </svg>
+
               <button
                 onClick={() => setCommandPaletteOpen(true)}
-                className="absolute top-44 left-24 bg-white text-skin-accent px-8 py-4 rounded-full text-2xl font-bold shadow-xl hover:scale-105 transition-transform -rotate-3"
+                className="bg-white text-skin-accent px-8 py-4 rounded-full text-2xl font-bold shadow-xl hover:scale-105 transition-transform -rotate-3 mt-4"
                 style={{ fontFamily: '"Caveat", cursive' }}
               >
                 Click here to try it!

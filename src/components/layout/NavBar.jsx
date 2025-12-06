@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Download, Menu, X, ChevronRight, ArrowRight } from "lucide-react";
+import {
+  Download,
+  Menu,
+  X,
+  ChevronRight,
+  ArrowRight,
+  Ruler,
+} from "lucide-react";
 import ThemeToggle from "../ui/ThemeToggle";
+import { useArchitect } from "../../context/ArchitectContext";
 
 const NavBar = () => {
   const location = useLocation();
@@ -66,6 +74,8 @@ const NavBar = () => {
     }),
   };
 
+  const { isArchitectMode, setIsArchitectMode } = useArchitect();
+
   return (
     <>
       <motion.nav
@@ -112,6 +122,19 @@ const NavBar = () => {
               );
             })}
           </div>
+
+          {/* Architect Mode Toggle */}
+          <button
+            onClick={() => setIsArchitectMode(!isArchitectMode)}
+            className={`architect-toggle hidden md:flex items-center justify-center w-10 h-10 rounded-full ml-4 transition-all ${
+              isArchitectMode
+                ? "bg-cyan-500 text-black shadow-[0_0_15px_rgba(6,182,212,0.6)]"
+                : "hover:bg-skin-card text-skin-text-base/60 hover:text-skin-text-base"
+            }`}
+            title="Toggle Architect Mode"
+          >
+            <Ruler size={18} />
+          </button>
 
           {/* Theme Toggle (Desktop) */}
           <div className="hidden md:block ml-2 border-l border-skin-border-base/20 pl-2">

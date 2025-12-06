@@ -18,6 +18,7 @@ import {
   Gamepad2,
 } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
+import { projects } from "../../data/projects";
 
 const CommandPalette = () => {
   const { isDark, toggleTheme, isCommandPaletteOpen, setCommandPaletteOpen } =
@@ -148,8 +149,71 @@ const CommandPalette = () => {
     },
   ];
 
-  // Filter commands
-  const filteredCommands = commands
+  // ... (inside component)
+
+  const getDynamicCommands = (searchQuery) => {
+    if (!searchQuery) return [];
+
+    const lowerQuery = searchQuery.toLowerCase();
+    const dynamicResults = [];
+
+    // 1. "Show me X Projects" Logic
+    // Regex to find technology or category keywords
+    // e.g. "Show me python" -> match "python"
+
+    // Known keywords from our data
+    const allTech = [
+      ...new Set(projects.flatMap((p) => p.tech.map((t) => t.toLowerCase()))),
+    ];
+    const allCats = [...new Set(projects.map((p) => p.category.toLowerCase()))];
+
+    // Check for direct matches in query
+    const matchedTech = allTech.find((t) => lowerQuery.includes(t));
+    const matchedCat = allCats.find((c) => lowerQuery.includes(c));
+
+    const keyword = matchedTech || matchedCat;
+
+    if (keyword) {
+      dynamicResults.push({
+        category: "AI Suggestions",
+        items: [
+          {
+            icon: <Search size={18} className="text-brand-blue" />,
+            label: `Filter Projects: "${keyword}"`,
+            action: () => navigate(`/projects?filter=${keyword}`),
+          },
+        ],
+      });
+    }
+
+    // 2. Project Title Matching
+    const matchedProjects = projects.filter((p) =>
+      p.title.toLowerCase().includes(lowerQuery)
+    );
+    if (matchedProjects.length > 0) {
+      const projectItems = matchedProjects.map((p) => ({
+        icon: <Code size={18} />,
+        label: `Open Project: ${p.title}`,
+        action: () => navigate(`/projects?filter=${p.title}`), // Or navigate to specific ID if you had single project page
+      }));
+
+      // Deduplicate if we already added a generic filter
+      if (!dynamicResults.some((g) => g.category === "AI Suggestions")) {
+        dynamicResults.push({
+          category: "Projects Found",
+          items: projectItems,
+        });
+      }
+    }
+
+    return dynamicResults;
+  };
+
+  // Combine static commands with dynamic AI results
+  const dynamicCmds = getDynamicCommands(query);
+
+  // Filter static commands as before
+  const filteredStaticCommands = commands
     .map((group) => ({
       ...group,
       items: group.items.filter((item) =>
@@ -158,8 +222,11 @@ const CommandPalette = () => {
     }))
     .filter((group) => group.items.length > 0);
 
+  // Merge: Put Dynamic results FIRST
+  const finalCommands = [...dynamicCmds, ...filteredStaticCommands];
+
   // Flatten for keyboard navigation
-  const flatItems = filteredCommands.flatMap((group) => group.items);
+  const flatItems = finalCommands.flatMap((group) => group.items);
 
   // Keyboard Navigation
   useEffect(() => {
@@ -198,9 +265,9 @@ const CommandPalette = () => {
           onClick={() => setCommandPaletteOpen(false)}
         >
           <motion.div
-            initial={{ scale: 0.95, opacity: 0, y: -20 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.95, opacity: 0, y: -20 }}
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.95, opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="w-full max-w-2xl bg-skin-base border border-skin-border-base rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[60vh]"
             onClick={(e) => e.stopPropagation()}
@@ -226,21 +293,31 @@ const CommandPalette = () => {
 
             {/* List */}
             <div className="overflow-y-auto p-2 scrollbar-hide">
-              {filteredCommands.length === 0 ? (
+              {finalCommands.length === 0 ? (
                 <div className="py-8 text-center text-skin-text-base/50">
-                  No results found.
+                  <p>No results found.</p>
+                  {query.length > 2 && (
+                    <p className="text-xs mt-2 text-skin-text-base/30">
+                      Try asking: "Show me Python" or "React Projects"
+                    </p>
+                  )}
                 </div>
               ) : (
-                filteredCommands.map((group, groupIndex) => (
+                finalCommands.map((group, groupIndex) => (
                   <div key={group.category} className="mb-2">
-                    <div className="px-3 py-2 text-xs font-semibold text-skin-text-base/40 uppercase tracking-wider">
+                    <div className="px-3 py-2 text-xs font-semibold text-skin-text-base/40 uppercase tracking-wider flex items-center justify-between">
                       {group.category}
+                      {group.category === "AI Suggestions" && (
+                        <span className="text-[10px] bg-brand-blue/20 text-brand-blue px-2 py-0.5 rounded-full">
+                          AI
+                        </span>
+                      )}
                     </div>
                     {group.items.map((item, itemIndex) => {
                       // Calculate global index for selection
                       let globalIndex = 0;
                       for (let i = 0; i < groupIndex; i++) {
-                        globalIndex += filteredCommands[i].items.length;
+                        globalIndex += finalCommands[i].items.length;
                       }
                       globalIndex += itemIndex;
 
