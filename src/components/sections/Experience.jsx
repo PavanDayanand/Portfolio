@@ -2,7 +2,7 @@ import React from "react";
 import BentoCard from "../ui/BentoCard";
 import { Circle, CheckCircle2 } from "lucide-react";
 
-const Experience = () => {
+function Experience() {
   const experiences = [
     {
       role: "Graphic Designer (Logo, Brand Identity)",
@@ -67,6 +67,6 @@ const Experience = () => {
       ))}
     </div>
   );
-};
+}
 
 export default Experience;

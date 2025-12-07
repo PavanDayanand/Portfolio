@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Award, Trophy, CheckCircle2, ExternalLink } from "lucide-react";
 
-const CertificateCard = ({ item, index }) => {
+function CertificateCard({ item, index }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -40,9 +40,9 @@ const CertificateCard = ({ item, index }) => {
       </div>
     </motion.div>
   );
-};
+}
 
-const Certifications = () => {
+function Certifications() {
   const achievements = [
     {
       title: '2nd Place - "Turn Data into Stories"',
@@ -86,6 +86,6 @@ const Certifications = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Certifications;

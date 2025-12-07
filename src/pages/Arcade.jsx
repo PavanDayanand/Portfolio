@@ -7,7 +7,7 @@ import ApexSwitcher from "../components/arcade/ApexSwitcher";
 import NeonBreaker from "../components/arcade/NeonBreaker";
 import { X } from "lucide-react";
 
-const Arcade = () => {
+function Arcade() {
   const [activeGame, setActiveGame] = useState(null);
 
   const games = [
@@ -124,6 +124,6 @@ const Arcade = () => {
       )}
     </div>
   );
-};
+}
 
 export default Arcade;

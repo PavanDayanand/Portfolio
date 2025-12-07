@@ -2,7 +2,7 @@ import React from "react";
 import BentoCard from "./BentoCard";
 import { useTheme } from "../../context/ThemeContext";
 
-const NowWidget = () => {
+function NowWidget() {
   const { isBlueMode } = useTheme();
   return (
     <BentoCard
@@ -41,6 +41,6 @@ const NowWidget = () => {
       </div>
     </BentoCard>
   );
-};
+}
 
 export default NowWidget;

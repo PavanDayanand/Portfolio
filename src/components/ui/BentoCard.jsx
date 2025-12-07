@@ -1,14 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const BentoCard = ({
+function BentoCard({
   children,
   className = "",
   title,
   dark = false,
   delay = 0,
   gradient = false,
-}) => {
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -49,6 +49,6 @@ const BentoCard = ({
       </div>
     </motion.div>
   );
-};
+}
 
 export default BentoCard;

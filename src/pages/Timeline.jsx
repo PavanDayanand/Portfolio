@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Briefcase, GraduationCap, Trophy, Code2 } from "lucide-react";
 
 // Scrapbook Photo Component
-const ScrapbookPhoto = ({ src, caption, rotation }) => {
+function ScrapbookPhoto({ src, caption, rotation }) {
   return (
     <motion.div
       whileHover={{ scale: 1.05, rotate: 0, zIndex: 10 }}
@@ -27,9 +27,9 @@ const ScrapbookPhoto = ({ src, caption, rotation }) => {
       <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 bg-white/30 backdrop-blur-sm border border-white/40 shadow-sm rotate-45 transform" />
     </motion.div>
   );
-};
+}
 
-const TimelineItem = ({ data, index, isLeft }) => {
+function TimelineItem({ data, index, isLeft }) {
   const itemRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: itemRef,
@@ -113,9 +113,9 @@ const TimelineItem = ({ data, index, isLeft }) => {
       </div>
     </motion.div>
   );
-};
+}
 
-const Timeline = () => {
+function Timeline() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -275,6 +275,6 @@ const Timeline = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Timeline;

@@ -2,7 +2,7 @@ import React from "react";
 import NavBar from "./NavBar";
 import CommandPalette from "../ui/CommandPalette";
 
-const Layout = ({ children }) => {
+function Layout({ children }) {
   return (
     <div className="min-h-screen bg-skin-base text-skin-text-base transition-colors duration-1000">
       <CommandPalette />
@@ -12,6 +12,6 @@ const Layout = ({ children }) => {
       </main>
     </div>
   );
-};
+}
 
 export default Layout;

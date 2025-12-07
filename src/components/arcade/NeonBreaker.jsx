@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 
-const NeonBreaker = ({ onClose }) => {
+function NeonBreaker({ onClose }) {
   const canvasRef = useRef(null);
   const requestRef = useRef(null);
   const scoreRef = useRef(0);
@@ -460,6 +460,6 @@ const NeonBreaker = ({ onClose }) => {
       )}
     </div>
   );
-};
+}
 
 export default NeonBreaker;

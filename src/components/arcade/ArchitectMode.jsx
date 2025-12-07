@@ -13,7 +13,7 @@ import {
 
 // --- Components ---
 
-const Screen = ({ position, rotation, scale = 1, url }) => {
+function Screen({ position, rotation, scale = 1, url }) {
   return (
     <group position={position} rotation={rotation} scale={scale}>
       {/* Monitor Stand */}
@@ -54,9 +54,9 @@ const Screen = ({ position, rotation, scale = 1, url }) => {
       </Html>
     </group>
   );
-};
+}
 
-const Laptop = ({ position, rotation }) => {
+function Laptop({ position, rotation }) {
   return (
     <group position={position} rotation={rotation}>
       {/* Base */}
@@ -82,9 +82,9 @@ const Laptop = ({ position, rotation }) => {
       </group>
     </group>
   );
-};
+}
 
-const Desk = () => {
+function Desk() {
   return (
     <group position={[0, -2, 0]}>
       {/* Table Top */}
@@ -111,9 +111,9 @@ const Desk = () => {
       </mesh>
     </group>
   );
-};
+}
 
-const Chair = () => {
+function Chair() {
   return (
     <group position={[0, -2, 2.5]} rotation={[0, Math.PI, 0]}>
       {/* Seat */}
@@ -137,9 +137,9 @@ const Chair = () => {
       </mesh>
     </group>
   );
-};
+}
 
-const Speaker = ({ position, rotation }) => {
+function Speaker({ position, rotation }) {
   return (
     <group position={position} rotation={rotation}>
       <mesh>
@@ -156,9 +156,9 @@ const Speaker = ({ position, rotation }) => {
       </mesh>
     </group>
   );
-};
+}
 
-const Lamp = ({ position }) => {
+function Lamp({ position }) {
   return (
     <group position={position}>
       {/* Base */}
@@ -187,9 +187,9 @@ const Lamp = ({ position }) => {
       />
     </group>
   );
-};
+}
 
-const Poster = ({ position, rotation, color = "#ff0055" }) => {
+function Poster({ position, rotation, color = "#ff0055" }) {
   return (
     <mesh position={position} rotation={rotation}>
       <planeGeometry args={[1.5, 2]} />
@@ -200,9 +200,9 @@ const Poster = ({ position, rotation, color = "#ff0055" }) => {
       </mesh>
     </mesh>
   );
-};
+}
 
-const PenStand = ({ position }) => {
+function PenStand({ position }) {
   return (
     <group position={position}>
       <mesh>
@@ -220,9 +220,9 @@ const PenStand = ({ position }) => {
       </mesh>
     </group>
   );
-};
+}
 
-const ArchitectMode = () => {
+function ArchitectMode() {
   return (
     <div className="w-full h-full bg-black">
       <Canvas shadows camera={{ position: [0, 2, 8], fov: 45 }}>
@@ -300,6 +300,6 @@ const ArchitectMode = () => {
       </div>
     </div>
   );
-};
+}
 
 export default ArchitectMode;

@@ -135,30 +135,36 @@ const skillCategories = [
   },
 ];
 
-const Skills = () => {
+function Skills() {
   const [activeCategory, setActiveCategory] = useState("core");
 
-  // Simple scroll spy effect
+  // Intersection Observer for Scroll Spy
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = skillCategories.map((cat) =>
-        document.getElementById(cat.id)
-      );
-      const scrollPosition = window.scrollY + 200; // Offset
-
-      for (const section of sections) {
-        if (
-          section &&
-          section.offsetTop <= scrollPosition &&
-          section.offsetTop + section.offsetHeight > scrollPosition
-        ) {
-          setActiveCategory(section.id);
-        }
-      }
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -60% 0px", // Trigger when section is near top of viewport
+      threshold: 0,
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveCategory(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+
+    skillCategories.forEach((cat) => {
+      const element = document.getElementById(cat.id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   const scrollToCategory = (id) => {
@@ -290,6 +296,6 @@ const Skills = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Skills;

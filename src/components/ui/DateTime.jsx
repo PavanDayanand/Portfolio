@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-const DateTime = () => {
+function DateTime() {
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
@@ -53,6 +53,6 @@ const DateTime = () => {
       </div>
     </motion.div>
   );
-};
+}
 
 export default DateTime;

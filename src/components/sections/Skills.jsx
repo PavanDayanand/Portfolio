@@ -1,7 +1,7 @@
 import React from "react";
 import BentoCard from "../ui/BentoCard";
 
-const SkillsSection = () => {
+function SkillsSection() {
   const skillCategories = [
     {
       title: "Programming Languages",
@@ -74,6 +74,6 @@ const SkillsSection = () => {
       ))}
     </div>
   );
-};
+}
 
 export default SkillsSection;

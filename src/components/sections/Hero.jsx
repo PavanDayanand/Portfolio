@@ -6,7 +6,7 @@ import { useTheme } from "../../context/ThemeContext";
 
 import DateTime from "../ui/DateTime";
 
-const Hero = () => {
+function Hero() {
   const { setCommandPaletteOpen, isBlueMode } = useTheme();
   const tags = [
     "#Data_Science",
@@ -261,6 +261,6 @@ const Hero = () => {
       </motion.div>
     </section>
   );
-};
+}
 
 export default Hero;

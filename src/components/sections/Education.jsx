@@ -3,7 +3,7 @@ import BentoCard from "../ui/BentoCard";
 import { CheckCircle2, GraduationCap } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
 
-const EducationSection = () => {
+function EducationSection() {
   const { isBlueMode } = useTheme();
   const education = [
     {
@@ -63,6 +63,6 @@ const EducationSection = () => {
       ))}
     </div>
   );
-};
+}
 
 export default EducationSection;

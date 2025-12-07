@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 
 const ArchitectContext = createContext();
 
-export const ArchitectProvider = ({ children }) => {
+export function ArchitectProvider({ children }) {
   const [isArchitectMode, setIsArchitectMode] = useState(false);
 
   useEffect(() => {
@@ -18,6 +18,8 @@ export const ArchitectProvider = ({ children }) => {
       {children}
     </ArchitectContext.Provider>
   );
-};
+}
 
-export const useArchitect = () => useContext(ArchitectContext);
+export function useArchitect() {
+  return useContext(ArchitectContext);
+}

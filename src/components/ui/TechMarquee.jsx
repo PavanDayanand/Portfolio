@@ -16,7 +16,7 @@ const techs = [
   "Framer Motion",
 ];
 
-const TechMarquee = () => {
+function TechMarquee() {
   return (
     <div className="relative flex overflow-hidden py-8 bg-skin-base border-y border-skin-border-base/50">
       {/* Gradient Masks */}
@@ -44,6 +44,6 @@ const TechMarquee = () => {
       </motion.div>
     </div>
   );
-};
+}
 
 export default TechMarquee;

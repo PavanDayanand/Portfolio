@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Github, ExternalLink, X } from "lucide-react";
 import { projects } from "../data/projects";
 
-const ProjectItem = ({ project }) => {
+function ProjectItem({ project }) {
   return (
     <div className="min-h-screen flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20 py-20">
       {/* Text Content */}
@@ -68,9 +68,9 @@ const ProjectItem = ({ project }) => {
       </div>
     </div>
   );
-};
+}
 
-const Projects = () => {
+function Projects() {
   const location = useLocation();
   const navigate = useNavigate();
   const [filter, setFilter] = useState(null);
@@ -160,6 +160,6 @@ const Projects = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Projects;

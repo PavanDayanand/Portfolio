@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 
-const SuperRajAdventure = ({ onClose }) => {
+function SuperRajAdventure({ onClose }) {
   const canvasRef = useRef(null);
   const requestRef = useRef(null);
   const scoreRef = useRef(0);
@@ -875,6 +875,6 @@ const SuperRajAdventure = ({ onClose }) => {
       )}
     </div>
   );
-};
+}
 
 export default SuperRajAdventure;

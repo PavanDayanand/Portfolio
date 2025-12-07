@@ -6,10 +6,11 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import TechMarquee from "../components/ui/TechMarquee";
+import HomeWidgets from "../components/home/HomeWidgets";
 
 import { useTheme } from "../context/ThemeContext";
 
-const Home = () => {
+function Home() {
   const { isBlueMode } = useTheme();
 
   return (
@@ -30,6 +31,11 @@ const Home = () => {
       <div className="my-20">
         <About />
       </div>
+
+      {/* Premium Widgets Section */}
+      <section className="mb-6">
+        <HomeWidgets />
+      </section>
 
       {/* Quick Links Section */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
@@ -97,6 +103,6 @@ const Home = () => {
       </section>
     </div>
   );
-};
+}
 
 export default Home;

@@ -12,7 +12,7 @@ import {
 import ThemeToggle from "../ui/ThemeToggle";
 import { useArchitect } from "../../context/ArchitectContext";
 
-const NavBar = () => {
+function NavBar() {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -78,11 +78,7 @@ const NavBar = () => {
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className="sticky top-4 z-40 mx-auto max-w-fit px-4"
-      >
+      <nav className="fixed top-4 left-0 right-0 z-40 mx-auto max-w-fit px-4">
         <div className="flex items-center gap-2 rounded-full bg-skin-base/80 px-3 py-2 shadow-lg backdrop-blur-md border border-skin-border-base/20">
           {/* Logo */}
           <NavLink
@@ -159,7 +155,7 @@ const NavBar = () => {
             <Menu size={24} />
           </button>
         </div>
-      </motion.nav>
+      </nav>
 
       {/* Mobile Side Panel */}
       <AnimatePresence>
@@ -252,6 +248,6 @@ const NavBar = () => {
       </AnimatePresence>
     </>
   );
-};
+}
 
 export default NavBar;

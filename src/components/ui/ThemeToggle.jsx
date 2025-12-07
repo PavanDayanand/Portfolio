@@ -3,7 +3,7 @@ import { useTheme } from "../../context/ThemeContext";
 import { Moon, Sun, Droplet } from "lucide-react";
 import { motion } from "framer-motion";
 
-const ThemeToggle = () => {
+function ThemeToggle() {
   const { isBlueMode, toggleTheme } = useTheme();
 
   return (
@@ -25,6 +25,6 @@ const ThemeToggle = () => {
       </motion.div>
     </button>
   );
-};
+}
 
 export default ThemeToggle;

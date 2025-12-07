@@ -3,7 +3,7 @@ import Experience from "./Experience";
 import Skills from "./Skills";
 import Education from "./Education";
 
-const Resume = () => {
+function Resume() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div className="md:col-span-1">
@@ -17,6 +17,6 @@ const Resume = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Resume;

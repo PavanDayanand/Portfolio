@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Github, Linkedin, Twitter, Mail, Download } from "lucide-react";
 
-const Footer = () => {
+function Footer() {
   return (
     <footer className="bg-skin-base border-t border-skin-border-base mt-20 transition-colors duration-1000">
       <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
@@ -62,6 +62,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;

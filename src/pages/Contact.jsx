@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
-const ContactCard = ({ icon, title, value, link, action, colorClass }) => {
+function ContactCard({ icon, title, value, link, action, colorClass }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -61,9 +61,9 @@ const ContactCard = ({ icon, title, value, link, action, colorClass }) => {
       <div className="absolute inset-0 bg-skin-inverted opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-0" />
     </Wrapper>
   );
-};
+}
 
-const Contact = () => {
+function Contact() {
   useEffect(() => {
     const script = document.createElement("script");
     script.setAttribute("data-name", "BMC-Widget");
@@ -192,6 +192,6 @@ const Contact = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Contact;

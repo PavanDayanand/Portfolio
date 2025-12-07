@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 
-const ArcadeCard = ({ title, description, image, onClick, comingSoon }) => {
+function ArcadeCard({ title, description, image, onClick, comingSoon }) {
   return (
     <motion.div
       whileHover={{ scale: 1.05, y: -10 }}
@@ -58,6 +58,6 @@ const ArcadeCard = ({ title, description, image, onClick, comingSoon }) => {
       </div>
     </motion.div>
   );
-};
+}
 
 export default ArcadeCard;

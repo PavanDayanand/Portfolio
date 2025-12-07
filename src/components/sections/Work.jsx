@@ -1,7 +1,7 @@
 import React from "react";
 import BentoCard from "../ui/BentoCard";
 
-const Work = () => {
+function Work() {
   const projects = [
     { title: "Project One", image: "/clarity.png", tag: "Branding" },
     { title: "Project Two", image: "/diabetes.png", tag: "UI/UX" },
@@ -31,6 +31,6 @@ const Work = () => {
       ))}
     </div>
   );
-};
+}
 
 export default Work;

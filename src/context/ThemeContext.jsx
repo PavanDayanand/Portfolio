@@ -2,8 +2,8 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 
 const ThemeContext = createContext();
 
-export const ThemeProvider = ({ children }) => {
-  const [isBlueMode, setIsBlueMode] = useState(false);
+export function ThemeProvider({ children }) {
+  const [isBlueMode, setIsBlueMode] = useState(true);
   const [isCommandPaletteOpen, setCommandPaletteOpen] = useState(false);
 
   const toggleTheme = () => {
@@ -11,10 +11,10 @@ export const ThemeProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (isBlueMode) {
-      document.documentElement.classList.add("theme-blue");
+    if (!isBlueMode) {
+      document.documentElement.classList.add("theme-light");
     } else {
-      document.documentElement.classList.remove("theme-blue");
+      document.documentElement.classList.remove("theme-light");
     }
   }, [isBlueMode]);
 
@@ -30,6 +30,8 @@ export const ThemeProvider = ({ children }) => {
       {children}
     </ThemeContext.Provider>
   );
-};
+}
 
-export const useTheme = () => useContext(ThemeContext);
+export function useTheme() {
+  return useContext(ThemeContext);
+}

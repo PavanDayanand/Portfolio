@@ -3,7 +3,7 @@ import BentoCard from "../ui/BentoCard";
 import NowWidget from "../ui/NowWidget";
 import { Mail, Linkedin, Globe, Github } from "lucide-react";
 
-const About = () => {
+function About() {
   return (
     <section className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[minmax(180px,auto)]">
       {/* Profile Card - Tall */}
@@ -110,6 +110,6 @@ const About = () => {
       </div>
     </section>
   );
-};
+}
 
 export default About;

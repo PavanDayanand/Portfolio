@@ -20,7 +20,7 @@ import {
 import { useTheme } from "../../context/ThemeContext";
 import { projects } from "../../data/projects";
 
-const CommandPalette = () => {
+function CommandPalette() {
   const { isDark, toggleTheme, isCommandPaletteOpen, setCommandPaletteOpen } =
     useTheme();
   const [query, setQuery] = useState("");
@@ -388,6 +388,6 @@ const CommandPalette = () => {
       )}
     </AnimatePresence>
   );
-};
+}
 
 export default CommandPalette;

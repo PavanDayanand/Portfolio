@@ -1,12 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const Marquee = ({
-  children,
-  direction = "left",
-  speed = 20,
-  className = "",
-}) => {
+function Marquee({ children, direction = "left", speed = 20, className = "" }) {
   return (
     <div className={`flex overflow-hidden whitespace-nowrap ${className}`}>
       <motion.div
@@ -41,6 +36,6 @@ const Marquee = ({
       </motion.div>
     </div>
   );
-};
+}
 
 export default Marquee;
