@@ -12,6 +12,11 @@ export default {
           dark: '#111111',
           gray: '#F5F5F7',
         },
+        neon: {
+          blue: '#2E86FF',
+          purple: '#B620E0',
+          cyan: '#00FFF0',
+        },
         skin: {
           base: 'rgb(var(--color-bg-base) / <alpha-value>)',
           inverted: 'rgb(var(--color-bg-inverted) / <alpha-value>)',
@@ -29,6 +34,12 @@ export default {
       animation: {
         'spin-slow': 'spin 3s linear infinite',
       },
+      backgroundImage: {
+        'glass-gradient': 'linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%)',
+      },
+      backdropBlur: {
+        xs: '2px',
+      }
     },
   },
   plugins: [],

@@ -13,6 +13,7 @@ import Certifications from "./pages/Certifications";
 import Contact from "./pages/Contact";
 import Arcade from "./pages/Arcade";
 import Timeline from "./pages/Timeline";
+import DesignSystem from "./pages/DesignSystem";
 
 function App() {
   const location = useLocation();
@@ -34,6 +35,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/arcade" element={<Arcade />} />
             <Route path="/timeline" element={<Timeline />} />
+            <Route path="/design-system" element={<DesignSystem />} />
           </Routes>
           <Footer />
         </Layout>
