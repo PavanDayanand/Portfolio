@@ -5,7 +5,7 @@ import { projects } from "../data/projects";
 
 function ProjectItem({ project }) {
   return (
-    <div className="min-h-screen flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20 py-20">
+    <div className="min-h-screen flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20 py-20 bg-transparent">
       {/* Text Content */}
       <div className="w-full md:w-1/2 space-y-8">
         <div>

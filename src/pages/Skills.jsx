@@ -27,14 +27,7 @@ const skillData = {
   },
 
   // Data Science
-  PyTorch: {
-    desc: "My preferred framework for deep learning research and prototyping complex neural networks.",
-    docs: "https://pytorch.org/",
-  },
-  TensorFlow: {
-    desc: "An end-to-end open source platform for machine learning, great for production deployment.",
-    docs: "https://www.tensorflow.org/",
-  },
+
   Pandas: {
     desc: "The backbone of my data preprocessing and EDA workflows. Essential for structured data.",
     docs: "https://pandas.pydata.org/",
@@ -53,10 +46,7 @@ const skillData = {
     desc: "A utility-first CSS framework that speeds up styling significantly and ensures consistency.",
     docs: "https://tailwindcss.com/",
   },
-  "Framer Motion": {
-    desc: "A production-ready motion library for React. I use it for all the smooth animations you see here.",
-    docs: "https://www.framer.com/motion/",
-  },
+
   Redux: {
     desc: "A predictable state container for JS apps. Useful for managing complex global state.",
     docs: "https://redux.js.org/",
@@ -71,14 +61,7 @@ const skillData = {
     desc: "Distributed version control system. I use it for tracking changes and collaborating.",
     docs: "https://git-scm.com/",
   },
-  Docker: {
-    desc: "Platform for developing, shipping, and running applications in containers.",
-    docs: "https://www.docker.com/",
-  },
-  AWS: {
-    desc: "Cloud computing services. I have experience deploying and managing apps on the cloud.",
-    docs: "https://aws.amazon.com/",
-  },
+  
   "VS Code": {
     desc: "My daily driver code editor. Highly customized for productivity.",
     docs: "https://code.visualstudio.com/",
@@ -121,12 +104,12 @@ const skillCategories = [
   {
     title: "Frontend",
     id: "frontend",
-    skills: ["Tailwind CSS", "Framer Motion", "Redux", "Figma"],
+    skills: ["Tailwind CSS", "Redux", "Figma"],
   },
   {
     title: "Tools & DevOps",
     id: "tools",
-    skills: ["Git", "Docker", "AWS", "VS Code", "Jupyter"],
+    skills: ["Git", "VS Code", "Jupyter"],
   },
   {
     title: "Analytics",
@@ -183,7 +166,7 @@ function Skills() {
     <div className="min-h-screen pb-20 bg-skin-base">
       {/* Marquee Header */}
       <div className="relative py-12 mb-20 bg-skin-inverted text-skin-text-inverted border-b-4 border-skin-accent shadow-2xl z-0">
-        <Marquee speed={40} className="mb-4 opacity-50">
+        <Marquee speed={120} className="mb-4 opacity-50">
           {allSkills.map((skill) => (
             <span key={skill} className="text-4xl font-black mx-8">
               {skill}

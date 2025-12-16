@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Download,
-  Menu,
-  X,
-  ChevronRight,
-  ArrowRight,
-  Ruler,
-} from "lucide-react";
+import { Download, Menu, X, Ruler } from "lucide-react";
 import ThemeToggle from "../ui/ThemeToggle";
 import { useArchitect } from "../../context/ArchitectContext";
 
@@ -40,39 +33,6 @@ function NavBar() {
     { name: "Timeline", path: "/timeline" },
     { name: "Contact", path: "/contact" },
   ];
-
-  const menuVariants = {
-    closed: {
-      x: "100%",
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 40,
-      },
-    },
-    open: {
-      x: "0%",
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 40,
-      },
-    },
-  };
-
-  const linkVariants = {
-    closed: { x: 50, opacity: 0 },
-    open: (i) => ({
-      x: 0,
-      opacity: 1,
-      transition: {
-        delay: i * 0.1 + 0.2,
-        type: "spring",
-        stiffness: 300,
-        damping: 30,
-      },
-    }),
-  };
 
   const { isArchitectMode, setIsArchitectMode } = useArchitect();
 
@@ -172,10 +132,10 @@ function NavBar() {
 
             {/* Panel */}
             <motion.div
-              variants={menuVariants}
-              initial="closed"
-              animate="open"
-              exit="closed"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
               className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-skin-base z-50 md:hidden shadow-2xl border-l border-skin-border-base flex flex-col"
             >
               {/* Header */}
@@ -193,33 +153,21 @@ function NavBar() {
 
               {/* Links */}
               <div className="flex-1 overflow-y-auto p-6 space-y-2">
-                {links.map((link, i) => {
+                {links.map((link) => {
                   const isActive = location.pathname === link.path;
                   return (
-                    <motion.div
+                    <NavLink
                       key={link.name}
-                      custom={i}
-                      variants={linkVariants}
+                      to={link.path}
+                      onClick={() => setIsOpen(false)}
+                      className={`group flex items-center justify-between p-4 rounded-2xl transition-all ${
+                        isActive
+                          ? "bg-skin-inverted text-skin-text-inverted"
+                          : "text-skin-text-base hover:bg-skin-card"
+                      }`}
                     >
-                      <NavLink
-                        to={link.path}
-                        className={`group flex items-center justify-between p-4 rounded-2xl transition-all ${
-                          isActive
-                            ? "bg-skin-inverted text-skin-text-inverted"
-                            : "text-skin-text-base hover:bg-skin-card"
-                        }`}
-                      >
-                        <span className="text-2xl font-bold">{link.name}</span>
-                        <ArrowRight
-                          size={24}
-                          className={`transform transition-transform ${
-                            isActive
-                              ? "rotate-0"
-                              : "-rotate-45 group-hover:rotate-0"
-                          }`}
-                        />
-                      </NavLink>
-                    </motion.div>
+                      <span className="text-2xl font-bold">{link.name}</span>
+                    </NavLink>
                   );
                 })}
               </div>

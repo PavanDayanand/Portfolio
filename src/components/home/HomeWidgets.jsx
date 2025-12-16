@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Gamepad2, History, Trophy, TrendingUp, Star } from "lucide-react";
+import ArcadeCoin from "../ui/ArcadeCoin";
 
 // --- Premium Arcade Card ---
 function ArcadeWidget() {
@@ -39,41 +40,16 @@ function ArcadeWidget() {
             </div>
           </div>
 
-          {/* Center Graphic (Neon Circle) */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-cyan-500/20 rounded-full blur-[80px] group-hover:bg-cyan-400/30 transition-colors duration-500" />
-
-          <div className="text-center relative z-20 mt-8 group-hover:scale-110 transition-transform duration-500">
-            <h3 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-skin-text-base to-skin-text-base/40 tracking-tighter">
-              ARCADE
-            </h3>
-            <p className="text-cyan-400 font-mono text-sm mt-1 tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              INSERT COIN
-            </p>
-          </div>
-
-          {/* Footer Stats similar to game stats */}
-          <div className="grid grid-cols-2 gap-2 mt-auto">
-            <div className="bg-skin-base/5 backdrop-blur-md rounded-xl p-3 border border-skin-border-base group-hover:border-cyan-500/30 transition-colors">
-              <div className="flex items-center gap-2 mb-1">
-                <Trophy size={14} className="text-yellow-400" />
-                <span className="text-[10px] uppercase text-skin-text-base/40 font-bold">
-                  Best Score
-                </span>
-              </div>
-              <span className="text-lg font-mono font-bold text-white">
-                99,999
-              </span>
-            </div>
-            <div className="bg-skin-base/5 backdrop-blur-md rounded-xl p-3 border border-skin-border-base group-hover:border-purple-500/30 transition-colors">
-              <div className="flex items-center gap-2 mb-1">
-                <Star size={14} className="text-purple-400" />
-                <span className="text-[10px] uppercase text-skin-text-base/40 font-bold">
-                  Games
-                </span>
-              </div>
-              <span className="text-lg font-mono font-bold text-skin-text-base">
-                03
-              </span>
+          {/* Center Graphic (3D Coin) */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[40%] text-center">
+            <ArcadeCoin />
+            <div className="mt-8">
+              <h3 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-skin-text-base to-skin-text-base/40 tracking-tighter">
+                ARCADE
+              </h3>
+              <p className="text-cyan-400 font-mono text-sm mt-1 tracking-widest animate-pulse">
+                INSERT COIN
+              </p>
             </div>
           </div>
         </div>
