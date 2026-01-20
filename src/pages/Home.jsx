@@ -1,36 +1,14 @@
 import React from "react";
 import Hero from "../components/sections/Hero";
 import About from "../components/sections/About";
+import TestimonialsSection from "../components/sections/TestimonialsSection";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // import TechMarquee from "../components/ui/TechMarquee";
-import LogoLoop from "../components/ui/LogoLoop";
+
 import HomeWidgets from "../components/home/HomeWidgets";
-import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiPython,
-  SiMongodb,
-  SiDocker,
-  SiFigma,
-  SiGit,
-  SiPostgresql,
-  SiGraphql,
-  SiJavascript,
-  SiFastapi,
-  SiPandas,
-  SiScikitlearn,
-  SiOpenai,
-  SiRedux,
-  SiJupyter,
-  SiTableau,
-  SiMysql,
-} from "react-icons/si";
 
 import { useTheme } from "../context/ThemeContext";
 
@@ -51,106 +29,6 @@ function Home() {
 
       <Hero />
 
-      {/* Skills Loop */}
-      <div className="py-10">
-        <LogoLoop
-          logos={[
-            // Core Stack
-            {
-              node: <SiPython />,
-              title: "Python",
-              href: "https://www.python.org",
-            },
-            {
-              node: <SiJavascript />,
-              title: "JavaScript",
-              href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-            },
-            {
-              node: <SiTypescript />,
-              title: "TypeScript",
-              href: "https://www.typescriptlang.org",
-            },
-            { node: <SiReact />, title: "React.js", href: "https://react.dev" },
-            {
-              node: <SiNextdotjs />,
-              title: "Next.js",
-              href: "https://nextjs.org",
-            },
-            {
-              node: <SiFastapi />,
-              title: "FastAPI",
-              href: "https://fastapi.tiangolo.com",
-            },
-
-            // Data Science
-            {
-              node: <SiPandas />,
-              title: "Pandas",
-              href: "https://pandas.pydata.org",
-            },
-            {
-              node: <SiScikitlearn />,
-              title: "Scikit-learn",
-              href: "https://scikit-learn.org",
-            },
-            {
-              node: <SiOpenai />,
-              title: "LLMs",
-              href: "https://openai.com",
-            },
-
-            // Frontend
-            {
-              node: <SiTailwindcss />,
-              title: "Tailwind CSS",
-              href: "https://tailwindcss.com",
-            },
-            {
-              node: <SiRedux />,
-              title: "Redux",
-              href: "https://redux.js.org",
-            },
-            {
-              node: <SiFigma />,
-              title: "Figma",
-              href: "https://www.figma.com",
-            },
-
-            // Tools & DevOps & Analytics
-            { node: <SiGit />, title: "Git", href: "https://git-scm.com" },
-            {
-              node: <SiDocker />,
-              title: "Docker",
-              href: "https://www.docker.com",
-            },
-            {
-              node: <SiJupyter />,
-              title: "Jupyter",
-              href: "https://jupyter.org",
-            },
-            {
-              node: <SiTableau />,
-              title: "Tableau",
-              href: "https://www.tableau.com",
-            },
-            {
-              node: <SiMysql />,
-              title: "SQL",
-              href: "https://dev.mysql.com/doc",
-            },
-          ]}
-          speed={20}
-          direction="left"
-          logoHeight={40}
-          gap={60}
-          hoverSpeed={5} // Slow down on hover (not full stop) to allow clicking
-          scaleOnHover={true}
-          fadeOut={true}
-          fadeOutColor="var(--color-bg-base)"
-        />
-      </div>
-
       <div className="my-20">
         <About />
       </div>
@@ -159,6 +37,9 @@ function Home() {
       <section className="mb-6">
         <HomeWidgets />
       </section>
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
 
       {/* Quick Links Section */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
