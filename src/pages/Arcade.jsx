@@ -60,7 +60,7 @@ function Arcade() {
   ];
 
   return (
-    <div className="min-h-screen pt-20 pb-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-skin-base text-skin-text-base pt-20 pb-12 px-4 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="text-center mb-16">
         <motion.h1

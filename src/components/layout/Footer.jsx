@@ -38,7 +38,7 @@ function Footer() {
               <Mail size={24} />
             </a>
             <a
-              href="/Pavan D MAIN .pdf"
+              href="/Pavan_D_Main.pdf"
               download
               className="text-skin-text-base/40 hover:text-skin-accent transition-colors"
               title="Download Resume"

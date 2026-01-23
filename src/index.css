@@ -35,12 +35,15 @@
 html {
   overflow-x: hidden;
   width: 100%;
+  overscroll-behavior-y: none;
 }
 
 body {
   @apply bg-skin-base text-skin-text-base transition-colors duration-500;
+  background-color: rgb(var(--color-bg-base)); /* Ensure native overscroll matches theme */
   overflow-x: hidden;
   width: 100%;
+  overscroll-behavior-y: none;
 }
 
 #root {

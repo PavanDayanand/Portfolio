@@ -353,7 +353,7 @@ function NeonBreaker({ onClose }) {
   }, [gameState]);
 
   return (
-    <div className="fixed inset-0 z-[100] bg-[#050505] font-['Orbitron']">
+    <div className="fixed inset-0 z-[100] bg-skin-base font-['Orbitron']">
       <canvas ref={canvasRef} className="block w-full h-full" />
 
       <button

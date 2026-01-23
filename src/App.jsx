@@ -15,6 +15,8 @@ import Arcade from "./pages/Arcade";
 import Timeline from "./pages/Timeline";
 import DesignSystem from "./pages/DesignSystem";
 
+import NavBar from "./components/layout/NavBar";
+
 function App() {
   const location = useLocation();
 
@@ -25,6 +27,7 @@ function App() {
   return (
     <ThemeProvider>
       <ArchitectProvider>
+        <NavBar />
         <Layout>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />

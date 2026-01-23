@@ -100,7 +100,7 @@ function CommandPalette() {
           label: "Download Resume",
           action: () => {
             const link = document.createElement("a");
-            link.href = "/Pavan D MAIN .pdf";
+            link.href = "/Pavan_D_Main.pdf";
             link.download = "Pavan_D_Resume.pdf";
             link.click();
           },
@@ -122,7 +122,7 @@ function CommandPalette() {
           action: () =>
             window.open(
               "https://www.linkedin.com/in/pavan-d-856231259/",
-              "_blank"
+              "_blank",
             ),
         },
       ],
@@ -188,7 +188,7 @@ function CommandPalette() {
 
     // 2. Project Title Matching
     const matchedProjects = projects.filter((p) =>
-      p.title.toLowerCase().includes(lowerQuery)
+      p.title.toLowerCase().includes(lowerQuery),
     );
     if (matchedProjects.length > 0) {
       const projectItems = matchedProjects.map((p) => ({
@@ -217,7 +217,7 @@ function CommandPalette() {
     .map((group) => ({
       ...group,
       items: group.items.filter((item) =>
-        item.label.toLowerCase().includes(query.toLowerCase())
+        item.label.toLowerCase().includes(query.toLowerCase()),
       ),
     }))
     .filter((group) => group.items.length > 0);
@@ -236,7 +236,7 @@ function CommandPalette() {
       if (e.key === "ArrowDown") {
         e.preventDefault();
         setSelectedIndex((prev) =>
-          prev < flatItems.length - 1 ? prev + 1 : prev
+          prev < flatItems.length - 1 ? prev + 1 : prev,
         );
       } else if (e.key === "ArrowUp") {
         e.preventDefault();

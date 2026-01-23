@@ -38,8 +38,8 @@ function NavBar() {
 
   return (
     <>
-      <nav className="fixed top-4 left-0 right-0 z-40 mx-auto max-w-fit px-4">
-        <div className="flex items-center gap-2 rounded-full bg-skin-base/80 px-3 py-2 shadow-lg backdrop-blur-md border border-skin-border-base/20">
+      <nav className="fixed top-4 left-0 right-0 z-50 mx-auto max-w-fit px-4">
+        <div className="flex items-center gap-2 rounded-full bg-skin-base/60 px-3 py-2 shadow-sm backdrop-blur-xl border border-skin-border-base/50 transition-all duration-300 hover:bg-skin-base/80 hover:shadow-md hover:border-skin-border-base/80">
           {/* Logo */}
           <NavLink
             to="/"
@@ -99,7 +99,7 @@ function NavBar() {
 
           {/* Download Resume Button (Desktop) */}
           <a
-            href="/Pavan D MAIN .pdf"
+            href="/Pavan_D_Main.pdf"
             download="Pavan_D_Resume.pdf"
             className="hidden md:flex items-center gap-2 ml-2 px-4 py-2 bg-skin-accent text-skin-text-accent rounded-full text-sm font-bold hover:opacity-90 transition-opacity shadow-sm"
           >
@@ -182,7 +182,7 @@ function NavBar() {
                 </div>
 
                 <a
-                  href="/Pavan D MAIN .pdf"
+                  href="/Pavan_D_Main.pdf"
                   download="Pavan_D_Resume.pdf"
                   className="flex items-center justify-center gap-2 w-full py-4 bg-skin-accent text-skin-text-accent rounded-xl font-bold text-lg hover:opacity-90 transition-opacity"
                 >

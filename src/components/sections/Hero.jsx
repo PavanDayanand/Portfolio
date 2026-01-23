@@ -169,12 +169,14 @@ function Hero() {
               className="relative pl-12"
             >
               <svg
-                className="absolute -top-8 left-8 w-16 h-16 text-white/80 rotate-12"
+                className="absolute -top-10 left-6 w-20 h-20 text-white/80 rotate-12 pointer-events-none z-20"
                 viewBox="0 0 100 100"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="3"
-                style={{ filter: "drop-shadow(2px 2px 0px rgba(0,0,0,0.2))" }}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{ filter: "drop-shadow(2px 2px 0px rgba(0,0,0,0.25))" }}
               >
                 <path d="M10,10 Q50,50 90,90" />
                 <path d="M90,90 L70,85 M90,90 L85,70" />
@@ -182,7 +184,7 @@ function Hero() {
 
               <button
                 onClick={() => setCommandPaletteOpen(true)}
-                className="bg-white text-skin-accent px-8 py-4 rounded-full text-2xl font-bold shadow-xl hover:scale-105 transition-transform -rotate-3 mt-4"
+                className="relative z-10 bg-white text-skin-accent px-8 py-4 rounded-full text-2xl font-bold shadow-xl hover:scale-105 transition-transform -rotate-3 mt-4"
                 style={{ fontFamily: '"Caveat", cursive' }}
               >
                 Click here to try it!
@@ -194,7 +196,7 @@ function Hero() {
         {/* Download Button on Card */}
         <div className="self-end relative z-10">
           <motion.a
-            href="/Pavan D MAIN .pdf"
+            href="/Pavan_D_Main.pdf"
             download="Pavan_D_Resume.pdf"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const fallbackQuotes = [
+  { quote: "Comfort is the enemy of ambition.", author: "Unknown" },
+  { quote: "Stay hungry, stay foolish.", author: "Steve Jobs" },
+  {
+    quote: "Build boldly, but refine relentlessly.",
+    author: "Pavan D Portfolio",
+  },
+];
+
 function TestimonialsSection() {
-  const [quotes, setQuotes] = useState([]);
+  const [quotes, setQuotes] = useState(fallbackQuotes);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   // Fetch Quotes
   useEffect(() => {
     const fetchQuotes = async () => {
+      setLoading(true);
       try {
         const res = await fetch("https://dummyjson.com/quotes");
         const data = await res.json();
@@ -17,11 +27,7 @@ function TestimonialsSection() {
         setLoading(false);
       } catch (error) {
         console.error("Failed to fetch quotes:", error);
-        // Fallback quotes
-        setQuotes([
-          { quote: "Comfort is the enemy of ambition.", author: "Unknown" },
-          { quote: "Stay hungry, stay foolish.", author: "Steve Jobs" },
-        ]);
+        setQuotes(fallbackQuotes);
         setLoading(false);
       }
     };
@@ -31,22 +37,31 @@ function TestimonialsSection() {
 
   // Cycle Quotes
   useEffect(() => {
-    if (loading || quotes.length === 0) return;
+    if (quotes.length === 0) return;
 
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % quotes.length);
     }, 10000); // 10 seconds
 
     return () => clearInterval(timer);
-  }, [loading, quotes]);
-
-  // Loading State
-  if (loading) return null;
+  }, [quotes]);
 
   const currentQuote = quotes[currentIndex];
 
   return (
     <section className="py-24 md:py-32 overflow-hidden relative min-h-[50vh] flex flex-col justify-center">
+      <motion.div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 opacity-30 blur-3xl"
+        style={{
+          background:
+            "linear-gradient(120deg, rgba(0,51,255,0.25), rgba(182,32,224,0.25), rgba(0,255,240,0.2))",
+          backgroundSize: "200% 200%",
+        }}
+        animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+      />
+      <div className="absolute inset-x-0 bottom-0 h-40 pointer-events-none bg-gradient-to-t from-skin-base via-skin-base/70 to-transparent" />
       <div className="container mx-auto px-6 md:px-12 text-center relative z-10 w-full">
         <div className="relative min-h-[300px] flex flex-col items-center justify-center">
           <AnimatePresence mode="wait">

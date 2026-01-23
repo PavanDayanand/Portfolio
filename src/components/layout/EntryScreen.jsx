@@ -78,7 +78,7 @@ const EntryScreen = ({ onComplete }) => {
     <motion.div
       variants={containerVariants}
       exit="exit"
-      className="fixed inset-0 z-[100] bg-[#050505] flex flex-col items-center justify-center text-white overflow-hidden font-mono"
+      className="fixed inset-0 z-[100] bg-skin-base flex flex-col items-center justify-center text-skin-text-base overflow-hidden font-mono"
       style={{ clipPath: "circle(150% at 50% 50%)" }}
     >
       <div className="relative flex flex-col items-center justify-center">
@@ -87,7 +87,7 @@ const EntryScreen = ({ onComplete }) => {
           <ScrambleText
             text="CREATIVE"
             trigger={step >= 1}
-            className="text-4xl md:text-6xl font-bold text-gray-500 tracking-widest"
+            className="text-4xl md:text-6xl font-bold text-skin-text-base/60 tracking-widest"
           />
         </div>
 
@@ -102,7 +102,7 @@ const EntryScreen = ({ onComplete }) => {
             <ScrambleText
               text="DEVELOPER"
               trigger={step >= 2}
-              className="text-3xl md:text-5xl font-bold text-gray-300 tracking-wider"
+              className="text-3xl md:text-5xl font-bold text-skin-text-base/80 tracking-wider"
             />
           </motion.div>
 
@@ -115,7 +115,7 @@ const EntryScreen = ({ onComplete }) => {
             <ScrambleText
               text="DESIGNER"
               trigger={step >= 3}
-              className="text-3xl md:text-5xl font-bold text-gray-300 tracking-wider"
+              className="text-3xl md:text-5xl font-bold text-skin-text-base/80 tracking-wider"
             />
           </motion.div>
 

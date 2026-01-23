@@ -10,22 +10,24 @@ const ProjectBook = ({ project, index, isActive, onClick }) => {
     <motion.div
       layout
       onClick={onClick}
-      className={`relative h-[75vh] cursor-pointer overflow-hidden border-r border-white/10 bg-zinc-900 group transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]
+      className={`relative h-[60vh] lg:h-[75vh] cursor-pointer overflow-hidden border-r border-skin-border-base bg-skin-card group transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]
         ${
-          isActive ? "flex-[15]" : "flex-[1] hover:bg-zinc-800 hover:flex-[1.5]"
+          isActive
+            ? "flex-[15]"
+            : "flex-[1] hover:bg-skin-base hover:flex-[1.5]"
         }`}
     >
       {/* Spine Content (Visible when collapsed) */}
       {!isActive && (
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-between py-10 opacity-100 transition-opacity duration-300">
-          <span className="text-xl font-mono text-white/50">
+          <span className="text-xl font-mono text-skin-text-base/50">
             {String(index + 1).padStart(2, "0")}
           </span>
 
           {/* Vertical Project Name (Top to Bottom, Sideways) */}
           <div className="flex-1 flex items-center justify-center py-4">
             <h2
-              className="text-2xl md:text-3xl font-black text-white uppercase tracking-widest whitespace-nowrap drop-shadow-lg"
+              className="text-2xl md:text-3xl font-black text-skin-text-base uppercase tracking-widest whitespace-nowrap drop-shadow-lg"
               style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
             >
               {project.title}
@@ -33,14 +35,14 @@ const ProjectBook = ({ project, index, isActive, onClick }) => {
           </div>
 
           <span
-            className="text-xs font-mono text-brand-blue uppercase tracking-wider"
+            className="text-xs font-mono text-skin-accent uppercase tracking-wider"
             style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
           >
             {project.category}
           </span>
 
           {/* Stronger overlay for contrast */}
-          <div className="absolute inset-0 z-[-1] bg-black/80" />
+          <div className="absolute inset-0 z-[-1] bg-skin-base/80" />
           <div className="absolute inset-0 z-[-2] opacity-40 group-hover:opacity-60 transition-opacity">
             <img
               src={project.image}
@@ -67,25 +69,25 @@ const ProjectBook = ({ project, index, isActive, onClick }) => {
                 alt={project.title}
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover/image:scale-105"
               />
-              <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-zinc-950 to-transparent pointer-events-none z-20" />
+              <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-skin-base to-transparent pointer-events-none z-20" />
             </div>
 
-            <div className="flex-1 bg-zinc-950 p-8 md:p-12 flex flex-col justify-start relative z-30 border-t border-white/5">
+            <div className="flex-1 bg-skin-base p-8 md:p-12 flex flex-col justify-start relative z-30 border-t border-skin-border-base/70">
               <div className="flex items-start justify-between mb-6">
                 <div>
-                  <span className="text-brand-blue font-bold tracking-wider uppercase text-xs block mb-2">
+                  <span className="text-skin-accent font-bold tracking-wider uppercase text-xs block mb-2">
                     {project.category}
                   </span>
-                  <h2 className="text-4xl md:text-6xl font-black text-white leading-none tracking-tight">
+                  <h2 className="text-4xl md:text-6xl font-black text-skin-text-base leading-none tracking-tight">
                     {project.title}
                   </h2>
                 </div>
-                <span className="text-8xl font-black text-white/5 select-none leading-none -mt-4 hidden md:block">
+                <span className="text-8xl font-black text-skin-text-base/5 select-none leading-none -mt-4 hidden md:block">
                   {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
 
-              <p className="text-gray-400 leading-relaxed mb-8 font-medium text-lg max-w-3xl">
+              <p className="text-skin-text-base/70 leading-relaxed mb-8 font-medium text-lg max-w-3xl">
                 {project.details}
               </p>
 
@@ -94,7 +96,7 @@ const ProjectBook = ({ project, index, isActive, onClick }) => {
                   {project.tech.map((t) => (
                     <span
                       key={t}
-                      className="px-3 py-1 bg-zinc-900 text-gray-300 rounded-full text-xs font-bold border border-white/10 uppercase tracking-wider"
+                      className="px-3 py-1 bg-skin-base text-skin-text-base rounded-full text-xs font-bold border border-skin-border-base uppercase tracking-wider"
                     >
                       {t}
                     </span>
@@ -106,7 +108,7 @@ const ProjectBook = ({ project, index, isActive, onClick }) => {
                       href={project.githubLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-bold hover:bg-gray-200 transition-colors"
+                      className="flex items-center gap-2 px-6 py-3 bg-skin-inverted text-skin-text-inverted rounded-full font-bold hover:opacity-90 transition-opacity"
                       onClick={(e) => e.stopPropagation()}
                     >
                       <Github size={18} /> Source
@@ -117,7 +119,7 @@ const ProjectBook = ({ project, index, isActive, onClick }) => {
                       href={project.liveLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-6 py-3 border border-white/20 text-white rounded-full font-bold hover:bg-white/10 transition-colors"
+                      className="flex items-center gap-2 px-6 py-3 border border-skin-border-base text-skin-text-base rounded-full font-bold hover:bg-skin-card transition-colors"
                       onClick={(e) => e.stopPropagation()}
                     >
                       <ExternalLink size={18} /> Live Demo
@@ -140,28 +142,28 @@ const GalleryItem = ({ project, index }) => {
     <div className="w-full flex items-center justify-center py-8 md:py-12 perspective-1000">
       {/* Max-width container for the split layout */}
       <div
-        className={`w-full max-w-7xl mx-auto bg-black border border-white/10 overflow-hidden shadow-2xl flex flex-col md:flex-row min-h-[500px] group`}
+        className={`w-full max-w-7xl mx-auto bg-skin-card border border-skin-border-base overflow-hidden shadow-2xl flex flex-col md:flex-row min-h-[500px] group`}
       >
         {/* LEFT: Text Content */}
-        <div className="flex-1 p-10 md:p-14 flex flex-col justify-between bg-zinc-950/80 backdrop-blur-md relative z-20">
+        <div className="flex-1 p-10 md:p-14 flex flex-col justify-between bg-skin-base/80 backdrop-blur-md relative z-20">
           <div>
-            <span className="text-brand-blue font-bold tracking-widest uppercase text-xs mb-3 block">
+            <span className="text-skin-accent font-bold tracking-widest uppercase text-xs mb-3 block">
               {project.category}
             </span>
-            <h3 className="text-4xl md:text-6xl font-black text-white mb-6 leading-[0.9] tracking-tighter uppercase">
+            <h3 className="text-4xl md:text-6xl font-black text-skin-text-base mb-6 leading-[0.9] tracking-tighter uppercase">
               {project.title}
             </h3>
             <div className="flex flex-wrap gap-2 mb-8">
               {project.tech.map((t) => (
                 <span
                   key={t}
-                  className="px-3 py-1 bg-zinc-900 text-gray-400 rounded-full text-[10px] font-bold border border-white/10 uppercase tracking-wider"
+                  className="px-3 py-1 bg-skin-base text-skin-text-base/70 rounded-full text-[10px] font-bold border border-skin-border-base uppercase tracking-wider"
                 >
                   {t}
                 </span>
               ))}
             </div>
-            <p className="text-gray-400 leading-relaxed font-medium text-sm md:text-base max-w-lg mb-8">
+            <p className="text-skin-text-base/70 leading-relaxed font-medium text-sm md:text-base max-w-lg mb-8">
               {project.details}
             </p>
           </div>
@@ -172,7 +174,7 @@ const GalleryItem = ({ project, index }) => {
                 href={project.githubLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-bold hover:bg-gray-200 transition-colors text-xs uppercase tracking-wide"
+                className="flex items-center gap-2 px-6 py-3 bg-skin-inverted text-skin-text-inverted rounded-full font-bold hover:opacity-90 transition-opacity text-xs uppercase tracking-wide"
               >
                 <Github size={16} /> Code
               </a>
@@ -182,7 +184,7 @@ const GalleryItem = ({ project, index }) => {
                 href={project.liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 border border-white/20 text-white rounded-full font-bold hover:bg-white/10 transition-colors text-xs uppercase tracking-wide"
+                className="flex items-center gap-2 px-6 py-3 border border-skin-border-base text-skin-text-base rounded-full font-bold hover:bg-skin-card transition-colors text-xs uppercase tracking-wide"
               >
                 <ExternalLink size={16} /> Demo
               </a>
@@ -190,13 +192,13 @@ const GalleryItem = ({ project, index }) => {
           </div>
 
           {/* Large Index Watermark */}
-          <div className="absolute bottom-6 right-6 text-[100px] font-black text-white/[0.03] leading-none select-none pointer-events-none">
+          <div className="absolute bottom-6 right-6 text-[100px] font-black text-skin-text-base/5 leading-none select-none pointer-events-none">
             {String(index + 1).padStart(2, "0")}
           </div>
         </div>
 
         {/* RIGHT: Image Section (Clean & Premium) */}
-        <div className="flex-[1.3] relative overflow-hidden bg-zinc-900 p-8 flex items-center justify-center">
+        <div className="flex-[1.3] relative overflow-hidden bg-skin-base p-8 flex items-center justify-center">
           {/* 3D Container Wrapper - Subtle */}
           <div className="relative w-full h-full perspective-1000 group-hover:scale-[1.02] transition-transform duration-700 ease-out">
             {/* Ambient Glow Background - Clean, No Grain */}
@@ -226,61 +228,57 @@ const GalleryItem = ({ project, index }) => {
 function Projects() {
   const [activeId, setActiveId] = useState(projects[0].id);
   const [viewMode, setViewMode] = useState("archive"); // "archive" | "gallery"
+  const isArchiveView = viewMode === "archive";
 
   return (
     <div
-      className={`bg-[#050505] ${
-        viewMode === "archive"
-          ? "h-screen overflow-hidden flex flex-col"
-          : "min-h-screen pb-32"
+      className={`bg-skin-base pt-24 md:pt-28 ${
+        isArchiveView ? "min-h-screen flex flex-col" : "min-h-screen pb-32"
       }`}
     >
       {/* Header with Switcher */}
-      <div
-        className={`flex-shrink-0 px-8 h-24 md:h-32 flex items-center justify-between border-b border-white/10 bg-zinc-950/80 backdrop-blur-md z-50 ${
-          viewMode === "gallery" ? "sticky top-0" : ""
-        }`}
-      >
-        <div>
-          <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter">
-            WORKS<span className="text-brand-blue">.</span>{" "}
+      <div className="flex-shrink-0 px-4 sm:px-6 lg:px-8 mb-10">
+        <div className="max-w-5xl mx-auto text-center">
+          <h1 className="text-5xl md:text-7xl font-black text-skin-text-base tracking-tighter mb-4">
+            WORKS<span className="text-skin-accent">.</span>
           </h1>
-          <p className="text-gray-400 text-sm hidden md:block mt-1">
-            {viewMode === "archive"
-              ? "Interactive Project Archive"
-              : "Curated Project Gallery"}
+          <p className="text-lg md:text-xl text-skin-text-base/70 max-w-3xl mx-auto">
+            Select a layout to browse the same builds either as an immersive
+            archive or a polished gallery.
           </p>
         </div>
 
         {/* View Toggle */}
-        <div className="flex items-center bg-zinc-900 border border-white/10 p-1 rounded-full">
-          <button
-            onClick={() => setViewMode("archive")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase transition-all ${
-              viewMode === "archive"
-                ? "bg-white text-black"
-                : "text-gray-400 hover:text-white"
-            }`}
-          >
-            <Library size={14} /> Archive
-          </button>
-          <button
-            onClick={() => setViewMode("gallery")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase transition-all ${
-              viewMode === "gallery"
-                ? "bg-white text-black"
-                : "text-gray-400 hover:text-white"
-            }`}
-          >
-            <LayoutTemplate size={14} /> Gallery
-          </button>
+        <div className="mt-10 flex justify-center">
+          <div className="flex items-center bg-skin-card/70 border border-skin-border-base/80 p-1 rounded-full shadow-inner shadow-black/20">
+            <button
+              onClick={() => setViewMode("archive")}
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all ${
+                isArchiveView
+                  ? "bg-skin-inverted text-skin-text-inverted shadow-lg shadow-black/20"
+                  : "text-skin-text-base/70 hover:text-skin-text-base"
+              }`}
+            >
+              <Library size={14} /> Archive
+            </button>
+            <button
+              onClick={() => setViewMode("gallery")}
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all ${
+                viewMode === "gallery"
+                  ? "bg-skin-inverted text-skin-text-inverted shadow-lg shadow-black/20"
+                  : "text-skin-text-base/70 hover:text-skin-text-base"
+              }`}
+            >
+              <LayoutTemplate size={14} /> Gallery
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Render View */}
-      {viewMode === "archive" ? (
+      {isArchiveView ? (
         /* --- BOOK RACK LAYOUT --- */
-        <div className="flex-1 flex gap-[1px] p-4 md:p-8 overflow-x-auto overflow-y-hidden">
+        <div className="flex-1 flex gap-[1px] p-4 md:p-8 overflow-x-auto lg:overflow-y-hidden">
           {projects.map((project, index) => (
             <ProjectBook
               key={project.id}

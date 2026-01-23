@@ -41,12 +41,12 @@ function TimelineItem({ data, index, isLeft }) {
     {
       stiffness: 100,
       damping: 30,
-    }
+    },
   );
 
   const x = useSpring(
     useTransform(scrollYProgress, [0, 1], [isLeft ? -50 : 50, 0]),
-    { stiffness: 100, damping: 30 }
+    { stiffness: 100, damping: 30 },
   );
 
   return (
@@ -62,7 +62,7 @@ function TimelineItem({ data, index, isLeft }) {
       {/* Content Card */}
       <motion.div
         style={{ opacity, x }}
-        className={`w-[calc(100%-60px)] md:w-[45%] p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors relative group ${
+        className={`w-[calc(100%-60px)] md:w-[45%] p-6 rounded-2xl border border-skin-border-base/80 bg-skin-inverted/5 backdrop-blur-sm hover:bg-skin-inverted/10 transition-colors relative group ${
           isLeft ? "md:mr-auto ml-16 md:ml-0" : "md:ml-auto ml-16"
         }`}
       >
@@ -108,7 +108,7 @@ function TimelineItem({ data, index, isLeft }) {
       <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center">
         <motion.div
           style={{ scale: scrollYProgress, opacity }}
-          className="w-4 h-4 rounded-full bg-skin-accent shadow-[0_0_10px_rgba(var(--color-accent),0.5)] z-10"
+          className="w-4 h-4 rounded-full bg-skin-accent shadow-[0_0_10px_rgba(var(--color-bg-accent),0.5)] z-10"
         />
       </div>
     </motion.div>
@@ -214,64 +214,66 @@ function Timeline() {
   ];
 
   return (
-    <div
-      ref={containerRef}
-      className="min-h-screen pt-24 pb-20 px-4 max-w-5xl mx-auto"
-    >
-      <div className="text-center mb-20">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-skin-accent via-purple-500 to-skin-accent animate-gradient mb-6"
-        >
-          THE JOURNEY
-        </motion.h1>
-        {/* Handwritten Subtitle */}
-        <motion.div
-          initial={{ opacity: 0, rotate: -5 }}
-          animate={{ opacity: 1, rotate: -5 }}
-          transition={{ delay: 0.3 }}
-          className="inline-block transform"
-        >
-          <span
-            className="text-3xl md:text-4xl text-skin-text-base/80"
-            style={{ fontFamily: '"Caveat", cursive' }}
+    <div className="bg-skin-base text-skin-text-base">
+      <div
+        ref={containerRef}
+        className="min-h-screen pt-24 pb-20 px-4 max-w-5xl mx-auto"
+      >
+        <div className="text-center mb-20">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-skin-accent via-purple-500 to-skin-accent animate-gradient mb-6"
           >
-            My scrapbook of memories & code
-          </span>
-        </motion.div>
-      </div>
-
-      <div className="relative">
-        {/* Central Progress Line */}
-        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-skin-base/20 transform -translate-x-1/2">
+            THE JOURNEY
+          </motion.h1>
+          {/* Handwritten Subtitle */}
           <motion.div
-            style={{ scaleY, originY: 0 }}
-            className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-skin-accent to-purple-500"
-          />
+            initial={{ opacity: 0, rotate: -5 }}
+            animate={{ opacity: 1, rotate: -5 }}
+            transition={{ delay: 0.3 }}
+            className="inline-block transform"
+          >
+            <span
+              className="text-3xl md:text-4xl text-skin-text-base/80"
+              style={{ fontFamily: '"Caveat", cursive' }}
+            >
+              My scrapbook of memories & code
+            </span>
+          </motion.div>
         </div>
 
-        {/* Timeline Items */}
-        <div className="space-y-4">
-          {timelineData.map((item, index) => (
-            <TimelineItem
-              key={index}
-              data={item}
-              index={index}
-              isLeft={index % 2 === 0}
+        <div className="relative">
+          {/* Central Progress Line */}
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-skin-base/20 transform -translate-x-1/2">
+            <motion.div
+              style={{ scaleY, originY: 0 }}
+              className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-skin-accent to-purple-500"
             />
-          ))}
-        </div>
-      </div>
+          </div>
 
-      {/* End Node */}
-      <div className="flex justify-center mt-12">
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          className="relative z-10 px-8 py-3 rounded-full bg-skin-accent text-skin-text-accent font-bold shadow-lg shadow-skin-accent/20 cursor-pointer"
-        >
-          What's Next?
-        </motion.div>
+          {/* Timeline Items */}
+          <div className="space-y-4">
+            {timelineData.map((item, index) => (
+              <TimelineItem
+                key={index}
+                data={item}
+                index={index}
+                isLeft={index % 2 === 0}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* End Node */}
+        <div className="flex justify-center mt-12">
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            className="relative z-10 px-8 py-3 rounded-full bg-skin-accent text-skin-text-accent font-bold shadow-lg shadow-skin-accent/20 cursor-pointer"
+          >
+            What's Next?
+          </motion.div>
+        </div>
       </div>
     </div>
   );

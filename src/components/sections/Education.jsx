@@ -34,26 +34,26 @@ function EducationSection() {
       {education.map((edu, index) => (
         <BentoCard
           key={index}
-          dark={!isBlueMode} // Inverted: Dark card in Light Mode, Light card in Dark Mode
-          className="flex flex-col justify-between min-h-[160px] group hover:border-brand-blue border border-white/10 transition-colors"
+          dark={isBlueMode}
+          className="flex flex-col justify-between min-h-[160px] group hover:border-brand-blue border border-skin-border-base transition-colors"
         >
           <div className="flex justify-between items-start mb-4">
-            <span className="px-4 py-1.5 bg-white text-brand-dark text-sm font-bold rounded-full">
+            <span className="px-4 py-1.5 bg-skin-inverted text-skin-text-inverted text-sm font-bold rounded-full">
               {edu.year}
             </span>
             <GraduationCap
               size={24}
-              className="text-gray-500 group-hover:text-brand-blue transition-colors"
+              className="text-skin-text-base/60 group-hover:text-brand-blue transition-colors"
             />
           </div>
 
           <div>
-            <p className="text-sm text-gray-400 mb-1">{edu.school}</p>
+            <p className="text-sm text-skin-text-base/60 mb-1">{edu.school}</p>
             <h4 className="text-xl md:text-2xl font-bold mb-2">{edu.degree}</h4>
-            <div className="flex flex-wrap gap-4 text-sm text-gray-500">
+            <div className="flex flex-wrap gap-4 text-sm text-skin-text-base/60">
               <span>{edu.details}</span>
               {edu.gpa && (
-                <span className="text-white font-medium">
+                <span className="text-skin-text-base font-medium">
                   • CGPA: {edu.gpa}
                 </span>
               )}
