@@ -1,7 +1,7 @@
 import React from "react";
 import BentoCard from "../ui/BentoCard";
 import NowWidget from "../ui/NowWidget";
-import { Mail, Linkedin, Globe, Github } from "lucide-react";
+import { Mail, Linkedin, Github } from "lucide-react";
 
 function About() {
   return (

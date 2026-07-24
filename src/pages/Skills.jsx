@@ -9,18 +9,6 @@ const skillData = {
     desc: "A versatile language I use for everything from data analysis to backend development.",
     docs: "https://www.python.org/doc/",
   },
-  JavaScript: {
-    desc: "The language of the web. I use ES6+ features to build dynamic and interactive user interfaces.",
-    docs: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-  },
-  TypeScript: {
-    desc: "A superset of JavaScript that adds static types, making code more robust and maintainable.",
-    docs: "https://www.typescriptlang.org/",
-  },
-  "React.js": {
-    desc: "My primary library for building component-based UIs. I love its ecosystem and flexibility.",
-    docs: "https://react.dev/",
-  },
   FastAPI: {
     desc: "A modern, fast (high-performance) web framework for building APIs with Python.",
     docs: "https://fastapi.tiangolo.com/",
@@ -42,15 +30,6 @@ const skillData = {
   },
 
   // Frontend
-  "Tailwind CSS": {
-    desc: "A utility-first CSS framework that speeds up styling significantly and ensures consistency.",
-    docs: "https://tailwindcss.com/",
-  },
-
-  Redux: {
-    desc: "A predictable state container for JS apps. Useful for managing complex global state.",
-    docs: "https://redux.js.org/",
-  },
   Figma: {
     desc: "The interface design tool I use to prototype layouts before writing a single line of code.",
     docs: "https://www.figma.com/",
@@ -61,7 +40,7 @@ const skillData = {
     desc: "Distributed version control system. I use it for tracking changes and collaborating.",
     docs: "https://git-scm.com/",
   },
-  
+
   "VS Code": {
     desc: "My daily driver code editor. Highly customized for productivity.",
     docs: "https://code.visualstudio.com/",
@@ -94,17 +73,17 @@ const skillCategories = [
   {
     title: "Core Stack",
     id: "core",
-    skills: ["Python", "JavaScript", "TypeScript", "React.js", "FastAPI"],
+    skills: ["Python", "FastAPI"],
   },
   {
     title: "Data Science",
     id: "ds",
-    skills: ["PyTorch", "TensorFlow", "Pandas", "Scikit-learn", "LLMs"],
+    skills: ["Pandas", "Scikit-learn", "LLMs"],
   },
   {
     title: "Frontend",
     id: "frontend",
-    skills: ["Tailwind CSS", "Redux", "Figma"],
+    skills: ["Figma"],
   },
   {
     title: "Tools & DevOps",
@@ -139,7 +118,7 @@ function Skills() {
 
     const observer = new IntersectionObserver(
       observerCallback,
-      observerOptions
+      observerOptions,
     );
 
     skillCategories.forEach((cat) => {

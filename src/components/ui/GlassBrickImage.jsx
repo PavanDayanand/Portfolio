@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
 
 const GlassBrickImage = ({ src, alt, className = "" }) => {
   const [columns, setColumns] = useState(10);
@@ -11,7 +10,7 @@ const GlassBrickImage = ({ src, alt, className = "" }) => {
     const calculateGrid = () => {
       if (!containerRef.current) return;
       const { width, height } = containerRef.current.getBoundingClientRect();
-      const cellSize = 60; // Desired cell size in pixels
+      const cellSize = 100; // Increased cell size for performance
       const cols = Math.ceil(width / cellSize);
       const rows = Math.ceil(height / cellSize);
       setColumns(cols);
@@ -52,24 +51,8 @@ const GlassBrickImage = ({ src, alt, className = "" }) => {
 };
 
 const GlassCell = () => {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
-    <motion.div
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setTimeout(() => setIsHovered(false), 300)} // Delay reset for "tail" effect
-      animate={{
-        backdropFilter: isHovered ? "blur(0px)" : "blur(10px)",
-        backgroundColor: isHovered
-          ? "rgba(255, 255, 255, 0)"
-          : "rgba(255, 255, 255, 0.05)",
-        // borderColor: isHovered
-        //   ? "rgba(255, 255, 255, 0)"
-        //   : "rgba(255, 255, 255, 0.1)",
-      }}
-      transition={{ duration: 0.4 }}
-      className="relative w-full h-full border-[0.5px] border-white/10"
-    />
+    <div className="relative w-full h-full border-[0.5px] border-white/10 transition-all duration-300 hover:backdrop-blur-none hover:bg-transparent bg-white/5 backdrop-blur-[10px]" />
   );
 };
 

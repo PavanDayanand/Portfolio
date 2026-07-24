@@ -21,11 +21,18 @@ import { useTheme } from "../../context/ThemeContext";
 import { projects } from "../../data/projects";
 
 function CommandPalette() {
-  const { isDark, toggleTheme, isCommandPaletteOpen, setCommandPaletteOpen } =
-    useTheme();
+  const {
+    isDark,
+    toggleTheme,
+    isCommandPaletteOpen,
+    setCommandPaletteOpen,
+    paletteBurstOrigin,
+    setPaletteBurstOrigin,
+  } = useTheme();
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef(null);
+  const prevOpenRef = useRef(isCommandPaletteOpen);
   const navigate = useNavigate();
 
   // Toggle with Cmd+K
@@ -33,6 +40,13 @@ function CommandPalette() {
     const handleKeyDown = (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
+        if (!isCommandPaletteOpen) {
+          const fallbackOrigin = {
+            x: window.innerWidth / 2,
+            y: Math.min(window.innerHeight * 0.2, 160),
+          };
+          setPaletteBurstOrigin(fallbackOrigin);
+        }
         setCommandPaletteOpen((prev) => !prev);
       }
       if (e.key === "Escape") {
@@ -42,7 +56,7 @@ function CommandPalette() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [setCommandPaletteOpen]);
+  }, [isCommandPaletteOpen, setCommandPaletteOpen, setPaletteBurstOrigin]);
 
   // Focus input when opened
   useEffect(() => {
@@ -52,6 +66,30 @@ function CommandPalette() {
       setSelectedIndex(0);
     }
   }, [isCommandPaletteOpen]);
+
+  useEffect(() => {
+    if (isCommandPaletteOpen && !prevOpenRef.current) {
+      const fallbackOrigin = (() => {
+        if (paletteBurstOrigin) return paletteBurstOrigin;
+        if (typeof window !== "undefined") {
+          return {
+            x: window.innerWidth / 2,
+            y: Math.min(window.innerHeight * 0.2, 160),
+          };
+        }
+        return { x: 0, y: 0 };
+      })();
+
+      window.dispatchEvent(
+        new CustomEvent("command-palette-burst", {
+          detail: fallbackOrigin,
+        }),
+      );
+      setPaletteBurstOrigin(null);
+    }
+
+    prevOpenRef.current = isCommandPaletteOpen;
+  }, [isCommandPaletteOpen, paletteBurstOrigin, setPaletteBurstOrigin]);
 
   const commands = [
     {
@@ -100,8 +138,8 @@ function CommandPalette() {
           label: "Download Resume",
           action: () => {
             const link = document.createElement("a");
-            link.href = "/Pavan_D_Main.pdf";
-            link.download = "Pavan_D_Resume.pdf";
+            link.href = "/Pavan_D_OL.pdf";
+            link.download = "Pavan_D_OL.pdf";
             link.click();
           },
         },

@@ -49,6 +49,17 @@ function TimelineItem({ data, index, isLeft }) {
     { stiffness: 100, damping: 30 },
   );
 
+  const sweepX = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    [isLeft ? -180 : 180, -60, isLeft ? 160 : -160],
+  );
+  const sweepOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.4, 0.8, 1],
+    [0, 0.4, 0.8, 0.2],
+  );
+
   return (
     <motion.div
       ref={itemRef}
@@ -62,10 +73,15 @@ function TimelineItem({ data, index, isLeft }) {
       {/* Content Card */}
       <motion.div
         style={{ opacity, x }}
-        className={`w-[calc(100%-60px)] md:w-[45%] p-6 rounded-2xl border border-skin-border-base/80 bg-skin-inverted/5 backdrop-blur-sm hover:bg-skin-inverted/10 transition-colors relative group ${
+        className={`w-[calc(100%-60px)] md:w-[45%] p-6 rounded-2xl border border-skin-border-base/80 bg-skin-inverted/5 backdrop-blur-sm hover:bg-skin-inverted/10 transition-colors relative group overflow-hidden ${
           isLeft ? "md:mr-auto ml-16 md:ml-0" : "md:ml-auto ml-16"
         }`}
       >
+        <motion.span
+          aria-hidden="true"
+          style={{ x: sweepX, opacity: sweepOpacity }}
+          className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-white/20 to-transparent blur-md pointer-events-none"
+        />
         <div className="flex items-center gap-3 mb-2">
           <span className="p-2 rounded-lg bg-skin-accent/20 text-skin-accent">
             {data.icon}

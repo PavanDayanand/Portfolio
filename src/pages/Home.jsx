@@ -1,16 +1,13 @@
 import React from "react";
 import Hero from "../components/sections/Hero";
 import About from "../components/sections/About";
-import TestimonialsSection from "../components/sections/TestimonialsSection";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import HomeWidgets from "../components/home/HomeWidgets";
+import { useTheme } from "../context/ThemeContext";
 
 // import TechMarquee from "../components/ui/TechMarquee";
-
-import HomeWidgets from "../components/home/HomeWidgets";
-
-import { useTheme } from "../context/ThemeContext";
 
 function Home() {
   const { isBlueMode } = useTheme();
@@ -29,7 +26,7 @@ function Home() {
 
       <Hero />
 
-      <div className="my-20">
+      <div className="my-12 md:my-20">
         <About />
       </div>
 
@@ -37,9 +34,6 @@ function Home() {
       <section className="mb-6">
         <HomeWidgets />
       </section>
-
-      {/* Testimonials Section */}
-      <TestimonialsSection />
 
       {/* Quick Links Section */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">

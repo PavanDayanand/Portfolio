@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const fallbackQuotes = [
@@ -47,9 +47,16 @@ function TestimonialsSection() {
   }, [quotes]);
 
   const currentQuote = quotes[currentIndex];
+  const sideQuotes = useMemo(() => {
+    if (quotes.length === 0) return [];
+    return [-1, 1].map((offset) => {
+      const index = (currentIndex + offset + quotes.length) % quotes.length;
+      return quotes[index];
+    });
+  }, [quotes, currentIndex]);
 
   return (
-    <section className="py-24 md:py-32 overflow-hidden relative min-h-[50vh] flex flex-col justify-center">
+    <section className="py-24 md:py-32 overflow-hidden relative min-h-[60vh] flex flex-col justify-center">
       <motion.div
         aria-hidden="true"
         className="absolute inset-0 -z-10 opacity-30 blur-3xl"
@@ -63,43 +70,69 @@ function TestimonialsSection() {
       />
       <div className="absolute inset-x-0 bottom-0 h-40 pointer-events-none bg-gradient-to-t from-skin-base via-skin-base/70 to-transparent" />
       <div className="container mx-auto px-6 md:px-12 text-center relative z-10 w-full">
-        <div className="relative min-h-[300px] flex flex-col items-center justify-center">
-          <AnimatePresence mode="wait">
+        <div className="relative min-h-[340px] flex flex-col items-center justify-center perspective-1000">
+          {/* Side Deck */}
+          {sideQuotes.map((quote, idx) => (
+            <motion.div
+              key={`${quote.quote}-${idx}`}
+              className={`absolute hidden md:block top-1/2 -translate-y-1/2 w-full max-w-3xl rounded-[32px] border border-white/10 bg-white/5 backdrop-blur-xl px-12 py-10`}
+              style={{
+                transformOrigin: idx === 0 ? "left center" : "right center",
+              }}
+              initial={false}
+              animate={{
+                scale: 0.92,
+                rotateY: idx === 0 ? 14 : -14,
+                translateX: idx === 0 ? -40 : 40,
+                opacity: 0.25,
+              }}
+            >
+              <p className="text-xl text-white/60 italic">"{quote.quote}"</p>
+            </motion.div>
+          ))}
+
+          <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={currentIndex}
-              initial={{
-                opacity: 0,
-                filter: "blur(10px)",
-                clipPath: "inset(0 100% 0 0)", // Reveal from left
-              }}
-              animate={{
-                opacity: 1,
-                filter: "blur(0px)",
-                clipPath: "inset(0 0% 0 0)", // Fully revealed
-              }}
-              exit={{
-                opacity: 0,
-                filter: "blur(10px)",
-                clipPath: "inset(0 0 0 100%)", // Wipe away to right
-              }}
+              initial={{ rotateY: -90, opacity: 0 }}
+              animate={{ rotateY: 0, opacity: 1 }}
+              exit={{ rotateY: 90, opacity: 0 }}
               transition={{
-                duration: 1.5,
-                ease: [0.4, 0, 0.2, 1], // Custom bezier for premium feel
+                duration: 0.9,
+                ease: [0.16, 1, 0.3, 1],
               }}
-              className="flex flex-col items-center max-w-6xl mx-auto px-4"
+              className="relative w-full max-w-4xl mx-auto"
             >
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold italic tracking-tight text-skin-text-base leading-tight mb-8">
-                "{currentQuote.quote}"
-              </h2>
+              <motion.div
+                whileHover={{ rotateX: -2, rotateY: 2, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 120, damping: 18 }}
+                className="rounded-[38px] border border-white/15 bg-gradient-to-br from-white/15 via-white/5 to-white/10 text-white px-8 sm:px-14 py-12 shadow-2xl backdrop-blur-3xl relative overflow-hidden"
+              >
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.25),transparent_60%)]" />
+                  <motion.div
+                    initial={{ x: "-120%" }}
+                    animate={{ x: ["-120%", "120%"] }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 6,
+                      ease: "linear",
+                    }}
+                    className="absolute -inset-y-8 w-1/3 bg-gradient-to-r from-transparent via-white/40 to-transparent rotate-6"
+                  />
+                </div>
 
-              <cite className="not-italic text-lg md:text-xl font-medium text-skin-text-base/70">
-                — {currentQuote.author}
-              </cite>
+                <h2 className="relative text-3xl md:text-5xl font-bold italic tracking-tight leading-tight mb-8">
+                  "{currentQuote.quote}"
+                </h2>
+                <cite className="relative not-italic text-lg md:text-xl font-semibold text-white/80">
+                  — {currentQuote.author}
+                </cite>
+              </motion.div>
             </motion.div>
           </AnimatePresence>
         </div>
       </div>
-      {/* Background is now fully transparent (removed the blob) */}
     </section>
   );
 }

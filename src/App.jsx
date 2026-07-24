@@ -14,8 +14,10 @@ import Contact from "./pages/Contact";
 import Arcade from "./pages/Arcade";
 import Timeline from "./pages/Timeline";
 import DesignSystem from "./pages/DesignSystem";
+import NotFound from "./pages/NotFound";
 
 import NavBar from "./components/layout/NavBar";
+import MotivationRibbon from "./components/layout/MotivationRibbon";
 
 function App() {
   const location = useLocation();
@@ -27,6 +29,7 @@ function App() {
   return (
     <ThemeProvider>
       <ArchitectProvider>
+        <MotivationRibbon />
         <NavBar />
         <Layout>
           <Routes location={location} key={location.pathname}>
@@ -39,6 +42,7 @@ function App() {
             <Route path="/arcade" element={<Arcade />} />
             <Route path="/timeline" element={<Timeline />} />
             <Route path="/design-system" element={<DesignSystem />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </Layout>

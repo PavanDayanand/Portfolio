@@ -23,19 +23,19 @@ function NowWidget() {
         <div className="flex flex-col">
           <span className="text-xs text-gray-400 mb-1">Currently Working</span>
           <span className="font-medium text-sm text-skin-text-base">
-            Internship at Elvi (Full Stack Developer)
+            Internship at Elvi 
           </span>
         </div>
         <div className="flex flex-col">
-          <span className="text-xs text-gray-400 mb-1">Upcoming</span>
+          <span className="text-xs text-gray-400 mb-1">College</span>
           <span className="font-medium text-sm text-skin-text-base">
-            Exams till Jan 15 2026
+            Currently in my 8th Sem 
           </span>
         </div>
         <div className="flex flex-col">
-          <span className="text-xs text-gray-400 mb-1">Leetcoding</span>
+          <span className="text-xs text-gray-400 mb-1">Working On</span>
           <span className="font-medium text-sm text-skin-text-base">
-            Graphs & DP
+            Java, Spring Boot.....
           </span>
         </div>
       </div>

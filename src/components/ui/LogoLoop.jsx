@@ -24,6 +24,7 @@ const LogoLoop = ({
       style={{
         height: logoHeight * 2,
         gap: `${gap}px`, // Add gap between the two loop blocks
+        willChange: "transform", // Optimize for scrolling performance
         maskImage: fadeOut
           ? `linear-gradient(to right, transparent, black 20%, black 80%, transparent)`
           : "none",

@@ -6,7 +6,6 @@ export const projects = [
     image: "/clarity.png",
     period: "April 2025 - November 2025",
     tech: [
-      "React",
       "FastAPI",
       "Python",
       "DenseNet121",
@@ -17,7 +16,7 @@ export const projects = [
       "A hospital-ready AI system for chest X-ray diagnosis integrating CNN, RNN, and Generative AI models.",
     details: `Developed a hospital-ready AI system for chest X-ray diagnosis integrating CNN, RNN, and Generative AI models.
     Implemented dual-model inference (DenseNet121 & ResNet152) with Grad-CAM explainability and automated report generation.
-    Built a full-stack solution using React and FastAPI, producing clinician-grade PDF reports.
+    Built a full-stack solution using FastAPI, producing clinician-grade PDF reports.
     Achieved 93% accuracy and AUC above 0.83 on the NIH ChestX-ray14 dataset with 112k+ images.`,
     liveLink: "https://clarity-project.netlify.app/",
     githubLink: "https://github.com/PavanDayanand/Clarity-FrontEnd",
@@ -32,7 +31,6 @@ export const projects = [
       "Gemini API",
       "LangChain",
       "LLMs",
-      "Tailwind CSS",
       "PyMuPDF",
       "FastAPI",
     ],

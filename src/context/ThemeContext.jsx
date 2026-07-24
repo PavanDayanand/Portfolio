@@ -5,6 +5,7 @@ const ThemeContext = createContext();
 export function ThemeProvider({ children }) {
   const [isBlueMode, setIsBlueMode] = useState(true);
   const [isCommandPaletteOpen, setCommandPaletteOpen] = useState(false);
+  const [paletteBurstOrigin, setPaletteBurstOrigin] = useState(null);
 
   const toggleTheme = () => {
     setIsBlueMode(!isBlueMode);
@@ -25,6 +26,8 @@ export function ThemeProvider({ children }) {
         toggleTheme,
         isCommandPaletteOpen,
         setCommandPaletteOpen,
+        paletteBurstOrigin,
+        setPaletteBurstOrigin,
       }}
     >
       {children}

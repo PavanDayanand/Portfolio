@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, ExternalLink, Library, LayoutTemplate } from "lucide-react";
 import { projects } from "../data/projects";
@@ -8,7 +8,6 @@ import { projects } from "../data/projects";
 const ProjectBook = ({ project, index, isActive, onClick }) => {
   return (
     <motion.div
-      layout
       onClick={onClick}
       className={`relative h-[60vh] lg:h-[75vh] cursor-pointer overflow-hidden border-r border-skin-border-base bg-skin-card group transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]
         ${
@@ -186,7 +185,7 @@ const GalleryItem = ({ project, index }) => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-6 py-3 border border-skin-border-base text-skin-text-base rounded-full font-bold hover:bg-skin-card transition-colors text-xs uppercase tracking-wide"
               >
-                <ExternalLink size={16} /> Demo
+                <ExternalLink size={18} /> Demo
               </a>
             )}
           </div>
@@ -227,8 +226,22 @@ const GalleryItem = ({ project, index }) => {
 
 function Projects() {
   const [activeId, setActiveId] = useState(projects[0].id);
-  const [viewMode, setViewMode] = useState("archive"); // "archive" | "gallery"
+  // Default to gallery on mobile (initial state check could be better, but this is simple)
+  // Use a safer check that defaults to archive on desktop
+  const isMobile =
+    typeof window !== "undefined" ? window.innerWidth < 768 : false;
+  const [viewMode, setViewMode] = useState(isMobile ? "gallery" : "archive");
   const isArchiveView = viewMode === "archive";
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setViewMode("gallery");
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div

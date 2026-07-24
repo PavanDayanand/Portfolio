@@ -5,11 +5,11 @@ function SkillsSection() {
   const skillCategories = [
     {
       title: "Programming Languages",
-      skills: ["Python", "JavaScript (ES6+)", "TypeScript", "SQL (MySQL)"],
+      skills: ["Python", "SQL (MySQL)"],
     },
     {
       title: "Frontend Development",
-      skills: ["React.js", "React Router", "Redux Toolkit", "Tailwind CSS"],
+      skills: [], // Removed all requested frontend skills
     },
     {
       title: "Data Science & ML",
@@ -53,9 +53,14 @@ function SkillsSection() {
     },
   ];
 
+  // Filter out empty categories if any
+  const filteredCategories = skillCategories.filter(
+    (cat) => cat.skills.length > 0,
+  );
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {skillCategories.map((category, index) => (
+      {filteredCategories.map((category, index) => (
         <BentoCard key={index} className="flex flex-col h-full">
           <h3 className="text-xl font-bold mb-4 text-brand-blue">
             {category.title}

@@ -7,7 +7,8 @@ import { useTheme } from "../../context/ThemeContext";
 import DateTime from "../ui/DateTime";
 
 function Hero() {
-  const { setCommandPaletteOpen, isBlueMode } = useTheme();
+  const { setCommandPaletteOpen, isBlueMode, setPaletteBurstOrigin } =
+    useTheme();
   const tags = [
     "#Data_Science",
     "#Machine_Learning",
@@ -28,6 +29,15 @@ function Hero() {
         ease: [0.2, 0.65, 0.3, 0.9],
       },
     }),
+  };
+
+  const handlePaletteCTA = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    setPaletteBurstOrigin({
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2,
+    });
+    setCommandPaletteOpen(true);
   };
 
   return (
@@ -71,13 +81,17 @@ function Hero() {
             <motion.span
               key={tag}
               initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: i * 0.05 + 0.5, type: "spring" }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                transition: { delay: i * 0.05 + 0.5, type: "spring" },
+              }}
               whileHover={{
                 scale: 1.1,
                 rotate: -2,
-                backgroundColor: "var(--color-bg-accent)",
-                color: "var(--color-text-accent)",
+                backgroundColor: "#3b82f6",
+                color: "#ffffff",
+                transition: { duration: 0.1, ease: "easeOut" },
               }}
               className="px-3 py-1.5 bg-skin-base rounded-full text-sm font-medium text-skin-text-base/70 border border-skin-border-base shadow-sm cursor-default transition-colors"
             >
@@ -104,7 +118,7 @@ function Hero() {
           scale: { duration: 0.8 },
           opacity: { duration: 0.8 },
         }}
-        className="lg:col-span-8 bg-skin-accent rounded-[40px] p-8 sm:p-12 relative overflow-hidden min-h-[400px] flex flex-col justify-between group perspective-1000"
+        className="lg:col-span-8 bg-skin-accent rounded-[32px] md:rounded-[40px] p-6 sm:p-12 relative overflow-hidden min-h-[400px] flex flex-col justify-between group perspective-1000 will-change-transform"
       >
         {/* Handwritten Prompt (Inside Card) */}
         <div className="absolute top-8 left-8 z-20 hidden md:block">
@@ -183,7 +197,7 @@ function Hero() {
               </svg>
 
               <button
-                onClick={() => setCommandPaletteOpen(true)}
+                onClick={handlePaletteCTA}
                 className="relative z-10 bg-white text-skin-accent px-8 py-4 rounded-full text-2xl font-bold shadow-xl hover:scale-105 transition-transform -rotate-3 mt-4"
                 style={{ fontFamily: '"Caveat", cursive' }}
               >
@@ -196,8 +210,8 @@ function Hero() {
         {/* Download Button on Card */}
         <div className="self-end relative z-10">
           <motion.a
-            href="/Pavan_D_Main.pdf"
-            download="Pavan_D_Resume.pdf"
+            href="/Pavan_D_OL.pdf"
+            download="Pavan_D_OL.pdf"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md text-skin-text-accent rounded-full font-bold transition-all border border-white/20 overflow-hidden relative group/btn"
@@ -257,7 +271,7 @@ function Hero() {
             transition={{ delay: 1.2, duration: 0.8 }}
             className="text-4xl lg:text-6xl font-bold mt-4 flex justify-between w-full"
           >
-            <span>2025</span>
+            <span>2026</span>
           </motion.div>
         </div>
       </motion.div>
