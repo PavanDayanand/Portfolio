@@ -9,14 +9,6 @@ import DateTime from "../ui/DateTime";
 function Hero() {
   const { setCommandPaletteOpen, isBlueMode, setPaletteBurstOrigin } =
     useTheme();
-  const tags = [
-    "#Data_Science",
-    "#Machine_Learning",
-    "#React",
-    "#Python",
-    "#Generative_AI",
-    "#Full_Stack",
-  ];
 
   const textVariants = {
     hidden: { y: 100, opacity: 0 },
@@ -58,47 +50,11 @@ function Hero() {
             />
           </motion.div>
 
-          <Link
-            to="/contact"
-            className={`group relative flex items-center gap-3 px-4 py-2 rounded-full transition-all duration-300 cursor-pointer mb-6 overflow-hidden hover:scale-105 ${
-              isBlueMode
-                ? "bg-green-500/10 text-green-500 border border-green-500/20"
-                : "bg-skin-card text-skin-text-base border border-skin-border-base shadow-sm hover:border-skin-border-base/80"
-            }`}
-          >
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
-            </span>
-            <span className="text-sm font-medium">Available for Work</span>
-          </Link>
+
 
           <DateTime />
         </div>
 
-        <div className="flex flex-wrap gap-2 p-4">
-          {tags.map((tag, i) => (
-            <motion.span
-              key={tag}
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                transition: { delay: i * 0.05 + 0.5, type: "spring" },
-              }}
-              whileHover={{
-                scale: 1.1,
-                rotate: -2,
-                backgroundColor: "#3b82f6",
-                color: "#ffffff",
-                transition: { duration: 0.1, ease: "easeOut" },
-              }}
-              className="px-3 py-1.5 bg-skin-base rounded-full text-sm font-medium text-skin-text-base/70 border border-skin-border-base shadow-sm cursor-default transition-colors"
-            >
-              {tag}
-            </motion.span>
-          ))}
-        </div>
       </div>
 
       {/* Right Column: Blue Portfolio Card */}
@@ -210,8 +166,8 @@ function Hero() {
         {/* Download Button on Card */}
         <div className="self-end relative z-10">
           <motion.a
-            href="/Pavan_D_OL.pdf"
-            download="Pavan_D_OL.pdf"
+            href="/Pavan D Resume.pdf"
+            download="Pavan D Resume.pdf"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md text-skin-text-accent rounded-full font-bold transition-all border border-white/20 overflow-hidden relative group/btn"

@@ -64,7 +64,14 @@ function CommandPalette() {
       setTimeout(() => inputRef.current?.focus(), 100);
       setQuery("");
       setSelectedIndex(0);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
     }
+    
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isCommandPaletteOpen]);
 
   useEffect(() => {
@@ -138,8 +145,8 @@ function CommandPalette() {
           label: "Download Resume",
           action: () => {
             const link = document.createElement("a");
-            link.href = "/Pavan_D_OL.pdf";
-            link.download = "Pavan_D_OL.pdf";
+            link.href = "/Pavan D Resume.pdf";
+            link.download = "Pavan D Resume.pdf";
             link.click();
           },
         },

@@ -4,6 +4,42 @@ import Marquee from "../components/ui/Marquee";
 import { ExternalLink, ArrowRight } from "lucide-react";
 
 const skillData = {
+  Swift: { desc: "The language I use to build native iOS apps, including Spendy.", docs: "https://www.swift.org/documentation/" },
+  SwiftUI: { desc: "Native Apple interfaces, sheets, navigation, and app interactions.", docs: "https://developer.apple.com/documentation/swiftui" },
+  WidgetKit: { desc: "At-a-glance app information on the Home Screen and Lock Screen.", docs: "https://developer.apple.com/documentation/widgetkit" },
+  "App Intents": { desc: "App actions that work with Siri and Apple Shortcuts.", docs: "https://developer.apple.com/documentation/appintents" },
+  // Frontend
+  "React JS": {
+    desc: "A JavaScript library for building user interfaces. My primary tool for building modern web applications.",
+    docs: "https://react.dev/",
+  },
+  JavaScript: {
+    desc: "The core programming language of the web, enabling interactive and dynamic experiences.",
+    docs: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+  },
+  TypeScript: {
+    desc: "A strongly typed superset of JavaScript that provides better tooling and code reliability.",
+    docs: "https://www.typescriptlang.org/",
+  },
+  "Framer Motion": {
+    desc: "A production-ready motion library for React that makes creating animations incredibly simple.",
+    docs: "https://www.framer.com/motion/",
+  },
+  Figma: {
+    desc: "The interface design tool I use to prototype layouts before writing a single line of code.",
+    docs: "https://www.figma.com/",
+  },
+
+  // AI Tools
+  Cursor: {
+    desc: "An AI-first code editor that dramatically speeds up development and coding workflows.",
+    docs: "https://cursor.sh/",
+  },
+  Codex: {
+    desc: "Advanced AI models that understand and generate code to assist in programming tasks.",
+    docs: "https://openai.com/blog/openai-codex/",
+  },
+
   // Core Stack
   Python: {
     desc: "A versatile language I use for everything from data analysis to backend development.",
@@ -13,9 +49,12 @@ const skillData = {
     desc: "A modern, fast (high-performance) web framework for building APIs with Python.",
     docs: "https://fastapi.tiangolo.com/",
   },
+  Supabase: {
+    desc: "An open-source Firebase alternative providing a Postgres database, authentication, and instant APIs.",
+    docs: "https://supabase.com/",
+  },
 
   // Data Science
-
   Pandas: {
     desc: "The backbone of my data preprocessing and EDA workflows. Essential for structured data.",
     docs: "https://pandas.pydata.org/",
@@ -29,35 +68,16 @@ const skillData = {
     docs: "#",
   },
 
-  // Frontend
-  Figma: {
-    desc: "The interface design tool I use to prototype layouts before writing a single line of code.",
-    docs: "https://www.figma.com/",
-  },
-
   // Tools & DevOps
   Git: {
     desc: "Distributed version control system. I use it for tracking changes and collaborating.",
     docs: "https://git-scm.com/",
   },
 
-  "VS Code": {
-    desc: "My daily driver code editor. Highly customized for productivity.",
-    docs: "https://code.visualstudio.com/",
-  },
-  Jupyter: {
-    desc: "Interactive computing environment. Perfect for data experimentation and visualization.",
-    docs: "https://jupyter.org/",
-  },
-
   // Analytics
   PowerBI: {
     desc: "Interactive data visualization tool for converting data into rich dashboards.",
     docs: "https://learn.microsoft.com/en-us/power-bi/",
-  },
-  Tableau: {
-    desc: "Visual analytics platform transforming the way we use data to solve problems.",
-    docs: "https://www.tableau.com/",
   },
   SQL: {
     desc: "Standard language for storing, manipulating and retrieving data in databases.",
@@ -70,10 +90,21 @@ const skillData = {
 };
 
 const skillCategories = [
+  { title: "iOS Development", id: "ios", skills: ["Swift", "SwiftUI", "WidgetKit", "App Intents"] },
+  {
+    title: "Frontend",
+    id: "frontend",
+    skills: ["React JS", "JavaScript", "TypeScript", "Framer Motion", "Figma"],
+  },
+  {
+    title: "AI Tools",
+    id: "ai-tools",
+    skills: ["Cursor", "Codex"],
+  },
   {
     title: "Core Stack",
     id: "core",
-    skills: ["Python", "FastAPI"],
+    skills: ["Python", "FastAPI", "Supabase"],
   },
   {
     title: "Data Science",
@@ -81,24 +112,19 @@ const skillCategories = [
     skills: ["Pandas", "Scikit-learn", "LLMs"],
   },
   {
-    title: "Frontend",
-    id: "frontend",
-    skills: ["Figma"],
-  },
-  {
     title: "Tools & DevOps",
     id: "tools",
-    skills: ["Git", "VS Code", "Jupyter"],
+    skills: ["Git"],
   },
   {
     title: "Analytics",
     id: "analytics",
-    skills: ["PowerBI", "Tableau", "SQL", "Excel"],
+    skills: ["PowerBI", "SQL", "Excel"],
   },
 ];
 
 function Skills() {
-  const [activeCategory, setActiveCategory] = useState("core");
+  const [activeCategory, setActiveCategory] = useState("ios");
 
   // Intersection Observer for Scroll Spy
   useEffect(() => {
@@ -134,7 +160,7 @@ function Skills() {
     if (element) {
       window.scrollTo({
         top: element.offsetTop - 100,
-        behavior: "smooth",
+        behavior: "auto",
       });
     }
   };

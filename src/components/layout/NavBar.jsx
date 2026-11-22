@@ -99,8 +99,8 @@ function NavBar() {
 
           {/* Download Resume Button (Desktop) */}
           <a
-            href="/Pavan_D_OL.pdf"
-            download="Pavan_D_OL.pdf"
+            href="/Pavan D Resume.pdf"
+            download="Pavan D Resume.pdf"
             className="hidden md:flex items-center gap-2 ml-2 px-4 py-2 bg-skin-accent text-skin-text-accent rounded-full text-sm font-bold hover:opacity-90 transition-opacity shadow-sm"
           >
             <Download size={16} />
@@ -182,8 +182,8 @@ function NavBar() {
                 </div>
 
                 <a
-                  href="/Pavan_D_OL.pdf"
-                  download="Pavan_D_OL.pdf"
+                  href="/Pavan D Resume.pdf"
+                  download="Pavan D Resume.pdf"
                   className="flex items-center justify-center gap-2 w-full py-4 bg-skin-accent text-skin-text-accent rounded-xl font-bold text-lg hover:opacity-90 transition-opacity"
                 >
                   <Download size={20} />

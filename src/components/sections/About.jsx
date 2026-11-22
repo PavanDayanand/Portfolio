@@ -25,7 +25,7 @@ function About() {
             is Pavan D
           </h2>
           <p className="text-xs text-gray-400 mt-4 max-w-[200px]">
-            Computer Science & Data Science Student
+            Computer Science & Data Science Graduate
           </p>
         </div>
       </BentoCard>
@@ -35,15 +35,10 @@ function About() {
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="flex-1">
             <h3 className="text-xl font-bold mb-4">
-              CS & Data Science Student based in Bangalore
+              I build apps that make everyday life easier.
             </h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              Highly motivated Computer Science & Data Science student skilled
-              in Machine Learning, AI-driven applications, and modern frontend
-              development. Experienced in building predictive models,
-              interactive dashboards, and full-stack solutions using Python,
-              SQL, React, TypeScript, and Redux Toolkit. Strong ability to turn
-              complex data into practical, user-focused products.
+            <p className="text-gray-600 text-base leading-relaxed">
+              I bring together AI, thoughtful design, and data science to turn everyday problems into useful apps. From native iOS experiences to websites and web apps, I care about how things work and how they feel.
             </p>
           </div>
           <div className="w-32 h-32 shrink-0">

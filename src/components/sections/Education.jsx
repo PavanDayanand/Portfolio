@@ -7,11 +7,25 @@ function EducationSection() {
   const { isBlueMode } = useTheme();
   const education = [
     {
-      year: "2022 - Present",
+      year: "June 2026 - Current",
+      school: "Elvi",
+      degree: "Software Engineer",
+      details: "Full-Time",
+      gpa: "",
+    },
+    {
+      year: "Feb 2026 - May 2026",
+      school: "Elvi",
+      degree: "Intern Trainee",
+      details: "Internship",
+      gpa: "",
+    },
+    {
+      year: "2022 - 2026",
       school: "Bangalore Institute of Technology",
       degree: "Computer Science and Engineering (Data Science)",
       details: "VV Puram, Bangalore, India",
-      gpa: "8.44/10",
+      gpa: "8.8 (Highest 6th sem 9.5)",
     },
     {
       year: "2021 - 2022",

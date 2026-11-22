@@ -146,15 +146,22 @@ function Timeline() {
 
   const timelineData = [
     {
-      year: "2024 - Present",
-      title: "Full Stack Developer Intern",
+      year: "June 2026 - Present",
+      title: "Software Engineer",
       subtitle: "Elvi",
-      description:
-        "Implementing scalable frontend architectures and backend solutions.",
+      description: "Working, learning, and progressing.",
       icon: <Briefcase size={16} />,
       type: "work",
       note: "Current Role! 🚀",
       // No image for this one specified, keeping it clean
+    },
+    {
+      year: "Feb 2026 - May 2026",
+      title: "Intern Trainee",
+      subtitle: "Elvi",
+      description: "Working, learning, and progressing.",
+      icon: <Briefcase size={16} />,
+      type: "work",
     },
     {
       year: "2024 - 4th Year",
@@ -200,7 +207,7 @@ function Timeline() {
     {
       year: "2022 - 2nd Year",
       title: "Interconnect",
-      subtitle: "College Project",
+      subtitle: "Academic Project",
       description: "A novel approach to connecting digital systems.",
       icon: <Trophy size={16} />,
       type: "award",
@@ -220,9 +227,9 @@ function Timeline() {
     },
     {
       year: "2022",
-      title: "College Start",
+      title: "B.E. Computer Science",
       subtitle: "Bangalore Institute of Technology",
-      description: "Began the journey in Computer Science & Engineering.",
+      description: "Started my degree in Computer Science & Engineering.",
       icon: <GraduationCap size={16} />,
       type: "education",
       note: "The Beginning ✨",

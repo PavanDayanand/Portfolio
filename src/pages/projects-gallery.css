@@ -1,0 +1,19 @@
+.work-gallery { padding-block: 48px; }
+.work-gallery-heading { max-width: 760px; margin-bottom: 48px; }
+.work-gallery-heading h1 { margin: 0 0 20px; font-size: clamp(48px, 7vw, 80px); line-height: 1; font-weight: 900; letter-spacing: -.065em; }
+.work-gallery-heading h1 span { color: rgb(var(--color-bg-accent)); }
+.work-gallery-heading > p { font-size: 18px; line-height: 1.6; color: rgb(var(--color-text-base) / .65); max-width: 620px; }
+.work-entry { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.2fr); align-items: center; gap: clamp(28px, 4vw, 64px); padding: 56px 0; border-top: 1px solid rgb(var(--color-border-base)); }
+.work-entry-copy { min-width: 0; }
+.work-entry-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; color: rgb(var(--color-text-base) / .6); font-size: 13px; line-height: 1.5; margin-bottom: 16px; }
+.work-entry-status { border: 1px solid rgb(var(--color-border-base)); border-radius: 999px; padding: 4px 10px; }
+.work-entry-copy h2 { font-size: clamp(28px, 3.5vw, 46px); font-weight: 750; letter-spacing: -.045em; line-height: 1.08; margin: 0 0 24px; overflow-wrap: anywhere; }
+.work-entry-description { font-size: 16px; line-height: 1.8; color: rgb(var(--color-text-base) / .7); margin: 0 0 24px; }
+.work-entry-tech { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 0; list-style: none; margin: 0 0 28px; color: rgb(var(--color-text-base) / .55); font-size: 13px; }
+.work-entry-visual { min-width: 0; margin: 0; }
+.work-entry-image { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: contain; border-radius: 12px; }
+.work-additional { margin-top: 56px; }
+.work-additional > h2 { font-size: 24px; font-weight: 650; margin: 0 0 24px; }
+.work-filter, .work-empty { font-size: 15px; line-height: 1.6; margin-top: 24px; }
+.work-filter a, .work-empty a { margin-left: 12px; text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 767px) { .work-gallery { padding-top: 24px; } .work-gallery-heading { margin-bottom: 32px; } .work-gallery-heading > p { font-size: 16px; } .work-entry { grid-template-columns: minmax(0, 1fr); padding: 36px 0; gap: 28px; } .work-entry-visual { grid-row: 1; } .work-entry-copy h2 { font-size: 32px; margin-bottom: 18px; } .work-additional { margin-top: 32px; } }

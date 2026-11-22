@@ -3,12 +3,10 @@ import NavBar from "./NavBar";
 import CommandPalette from "../ui/CommandPalette";
 import AmbientBackground from "../ui/AmbientBackground";
 import CommandPaletteBurst from "../ui/CommandPaletteBurst";
-import SmoothScroll from "../ui/SmoothScroll";
 
 function Layout({ children }) {
   return (
     <div className="min-h-screen bg-skin-base text-skin-text-base transition-colors duration-200 relative isolation-auto">
-      <SmoothScroll />
       <AmbientBackground />
       <CommandPaletteBurst />
       <CommandPalette />

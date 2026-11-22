@@ -1,4 +1,5 @@
 import React from "react";
+import FeaturedProjects from "../components/sections/FeaturedProjects";
 import Hero from "../components/sections/Hero";
 import About from "../components/sections/About";
 import { motion } from "framer-motion";
@@ -29,6 +30,8 @@ function Home() {
       <div className="my-12 md:my-20">
         <About />
       </div>
+
+      <FeaturedProjects />
 
       {/* Premium Widgets Section */}
       <section className="mb-6">
